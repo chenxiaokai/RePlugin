@@ -37,8 +37,12 @@ public class RePluginHostConfigCreator implements IFileCreator {
         this.variant = variant;
         this.config = cfg
         //make it generated in buildConfig output dir so that we don't need to hook anything
+
+        // /Users/chenxiaokai/AndroidStudioProjects/Replugin/replugin-sample/host/app/build/generated/source/buildConfig/baidu/release
         File buildConfigGeneratedDir = this.variant.getVariantData().getScope().getBuildConfigSourceOutputDir()
         fileName = HOST_CONFIG_NAME;
+
+        //  /com/qihoo360/replugin/gen/
         fileDir = new File(buildConfigGeneratedDir, HOST_CONFIG_PATH)
     }
 

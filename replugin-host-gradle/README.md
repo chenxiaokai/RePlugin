@@ -10,7 +10,8 @@ RePlugin Host Gradle是一个Gradle插件，由 **主程序** 负责引入。
 * 生成HostBuildConfig类，方便插件框架读取并自定义其属性
 * 生成 plugins-builtin.json，json中含有插件应用的信息，包名，插件名，插件路径等。
 
-开发者需要依赖此Gradle插件，以实现对RePlugin的接入。请参见WiKi以了解接入方法。
 
-有关RePlugin Host Gradle的详细描述，请访问我们的WiKi，以了解更多的内容。
-（文档正在完善，请耐心等待）
+
+知识点:
+* replugin-host-gradle.properties 文件名用来指定插件名，即在宿主中使用插件时的 apply plugin: 'replugin-host-gradle' 就是文件名
+* 文件中的implementation-class用来指定插件实现类

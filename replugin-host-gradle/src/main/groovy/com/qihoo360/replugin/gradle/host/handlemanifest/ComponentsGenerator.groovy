@@ -26,15 +26,69 @@ class ComponentsGenerator {
     def static final infix = 'loader.a.Activity'
 
     def static final name = 'android:name'
+
+    /*
+    服务所在进程的名字。通常，一个应用的所有组件都运行在系统为这个应用所创建的默认进程中
+        1): 如果被设置的进程名是以一个冒号开头的，则这个新的进程对于这个应用来说是私有的，当它被需要或者这个服务需要在新进程中运行的时候，这个新进程将会被创建。
+        2): 如果这个进程的名字是以小写字符开头的，则这个服务将运行在一个以这个名字命名的全局的进程中，当然前提是它有相应的权限。这将允许在不同应用中的各种组件可以共享一个进程，从而减少资源的占用
+     */
     def static final process = 'android:process'
+
+    //android:taskAffinity 的作用 https://juejin.im/post/5935081d2f301e006b09cb9e
     def static final task = 'android:taskAffinity'
     def static final launchMode = 'android:launchMode'
     def static final authorities = 'android:authorities'
+
+    /*
+    官方解释
+    android:multiprocess
+        If the app runs in multiple processes, this attribute determines whether multiple instances of the content provder are created.
+        If true, each of the app's processes has its own content provider object.
+        If false, the app's processes share only one content provider object. The default value is false.
+
+        Setting this flag to true may improve performance by reducing the overhead of interprocess(进程间) communication, but it also increases the memory footprint of each process.
+
+    1. android:process=":fore"，android:multiprocess="true"：provider不会随应用的启动而加载，当调用到provider的时候才会加载，
+       加载时provider是在调用者的进程中初始化的。这时候可能定义provider的fore进程还没有启动。
+
+    2. android:process=":fore"（android:multiprocess默认情况下为"false"）：provider不会随应用的启动而加载，当调用到provider的时候才会加载，
+       加载时provider是在“fore”进程中初始化的。
+
+    3. android:multiprocess="true"：provider会随着应用启动的时候加载，加载时provider是在应用默认主进程中初始化的。对于android:multiprocess=true，
+       意味着provider可以多实例，那么由调用者在自己的进程空间实例化一个ContentProvider对象，此时定义ContentProvider的App可能并没有启动。
+
+    4. android:multiprocess="false"：provider会随着应用启动的时候加载，加载时provider是在应用默认主进程中初始化的。对于android:multiprocess=false（默认值），
+       由系统把定义该ContentProvider的App启动起来(一个独立的Process)并实例化ContentProvider，这种ContentProvider只有一个实例，运行在自己App的Process中。所有调用者共享该ContentProvider实例，调用者与ContentProvider实例位于两个不同的Process。
+
+       总之，android:multiprocess 应该理解为：是否允许在调用者的进程里实例化provider，而跟定义它的进程没有关系。
+     */
     def static final multiprocess = 'android:multiprocess'
 
     def static final cfg = 'android:configChanges'
     def static final cfgV = 'keyboard|keyboardHidden|orientation|screenSize'
 
+    /*
+     Activity:
+        在Activity中该属性用来表示：当前Activity是否可以被另一个Application的组件启动：true允许被启动；false不允许被启动。
+        如果被设置为了false，那么这个Activity将只会被当前Application或者拥有同样user ID的Application的组件调用。
+        exported 的默认值根据Activity中是否有intent filter 来定。没有任何的filter意味着这个Activity只有在详细的描述了他的class name后才能被唤醒
+        .这意味着这个Activity只能在应用内部使用，因为其它application并不知道这个class的存在。所以在这种情况下，它的默认值是false。
+        从另一方面讲，如果Activity里面至少有一个filter的话，意味着这个Activity可以被其它应用从外部唤起，这个时候它的默认值是true。
+
+     Service:
+        该属性用来表示，其它应用的组件是否可以唤醒service或者和这个service进行交互：true可以，false不可以。如果为false，
+        只有同一个应用的组件或者有着同样user ID的应用可以启动这个service或者绑定这个service
+
+     ContentProvider:
+        当前内容提供者是否会被其它应用使用：
+        true: 当前提供者可以被其它应用使用。任何应用可以使用Provider通过URI 来获得它，也可以通过相应的权限来使用Provider。
+
+        false:当前提供者不能被其它应用使用。设置Android：exported=“false”来限制其它应用获得你应用的Provider。只有拥有同样的user ID 的
+        应用可以获得当前应用的Provider。
+
+     BroadcastReceiver:
+        当前broadcast Receiver 是否可以从当前应用外部获取Receiver message 。true，可以；false 不可以。如果为false ,当前broadcast Receiver 只能收到同一个应用或者拥有同一 user ID 应用发出广播。
+     */
     def static final exp = 'android:exported'
     def static final expV = 'false'
 
@@ -66,6 +120,7 @@ class ComponentsGenerator {
         def writer = new StringWriter()
         def xml = new MarkupBuilder(writer)
 
+        //基于 Groovy 的 MarkupBuilder api，根据 RepluginConfig 类中的配置，拼出组件坑位的xml 字符串。
         /* UI 进程 */
         xml.application {
 
@@ -77,7 +132,9 @@ class ComponentsGenerator {
             provider(
                     "${name}":"com.qihoo360.replugin.component.process.ProcessPitProviderPersist",
                     "${authorities}":"${applicationID}.loader.p.main",
+                    //exp => android:exported
                     "${exp}":"false",
+                    //process => android:process
                     "${process}":"${pluginMgrProcessName}")
 
             provider(

@@ -35,11 +35,17 @@ public class PluginBuiltinJsonCreator implements IFileCreator {
     def PluginBuiltinJsonCreator(def project, def variant, def cfg) {
         this.config = cfg
         this.variant = variant
+
         //make sure processResources Task execute after mergeAssets Task
+        //mergeAssetsTaskName => merge{productFlavor}{Debug/Release}Assets
         String mergeAssetsTaskName = variant.getVariantData().getScope().getMergeAssetsTask().name
         //get real gradle task
         def mergeAssetsTask = project.tasks.getByName(mergeAssetsTaskName)
+
         fileDir = mergeAssetsTask.outputDir
+        //fileDir = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/host/app/build/intermediates/assets/{productFlavor}/{Debug/Release}
+        System.out.println("------cxk-------> fileDir = "+fileDir)
+
         fileName = config.builtInJsonFileName
     }
 
@@ -63,6 +69,7 @@ public class PluginBuiltinJsonCreator implements IFileCreator {
             return null
         }
 
+        //遍历 assets/plugins/xxx.jar 文件
         new File(fileDir.getAbsolutePath() + File.separator + config.pluginDir)
                 .traverse(type: FileType.FILES, nameFilter: ~/.*\${config.pluginFilePostfix}/) {
 

@@ -42,12 +42,29 @@ public class Replugin implements Plugin<Project> {
         this.project = project
 
         /* Extensions */
+        //将RepluginConfig类的常量配置信息赋值给AppConstant.USER_CONFIG，在接下来checkUserConfig(config)检查配置信息时有用到,主要检查配置信息数据类型是否正确。
         project.extensions.create(AppConstant.USER_CONFIG, RepluginConfig)
 
+        //判断project是否有 使用插件 apply plugin: 'com.android.application'
+        //如果希望判断是否有libraryPlugin，可以写 if (project.plugins.hasPlugin(LibraryPlugin))
         if (project.plugins.hasPlugin(AppPlugin)) {
 
+            /*
+            获取project中的AppExtension类型extension，即在你的app模块builde.gradle定义的闭包,如下
+
+            android {
+                ....
+            }
+             */
             def android = project.extensions.getByType(AppExtension)
+
+            //如果是Android library库，那么就将applicationVariants替换为libraryVariants
             android.applicationVariants.all { variant ->
+
+                /*
+                  这里遍历次数是， productFlavors里面的渠道 * debug和release
+                      例如这里productFlavors有 baidu 和 QQ 所以，遍历4次，分别对应  QQDebug QQRelease  baiduDebug baiduRelease
+                 */
 
                 addShowPluginTask(variant)
 
@@ -56,30 +73,44 @@ public class Replugin implements Plugin<Project> {
                     checkUserConfig(config)
                 }
 
+                //得到值就是 => applicationId "com.qihoo360.replugin.sample.host"
                 def appID = variant.generateBuildConfig.appPackageName
+
                 def newManifest = ComponentsGenerator.generateComponent(appID, config)
 
                 def variantData = variant.variantData
                 def scope = variantData.scope
 
-                //host generate task
-                def generateHostConfigTaskName = scope.getTaskName(AppConstant.TASK_GENERATE, "HostConfig")
-                def generateHostConfigTask = project.task(generateHostConfigTaskName)
+                //host generate task  创建rpGenerate{productFlavor}{Debug/Release}HostConfig Task
+                def generateHostConfigTaskName = scope.getTaskName(AppConstant.TASK_GENERATE, "HostConfig") //生成gradle task名字
+                def generateHostConfigTask = project.task(generateHostConfigTaskName)  //创建task
 
                 generateHostConfigTask.doLast {
                     FileCreators.createHostConfig(project, variant, config)
                 }
+
+                //replugin-plugin
                 generateHostConfigTask.group = AppConstant.TASKS_GROUP
 
-                //depends on build config task
+                //depends on build config task       generate{productFlavor}{Debug/Release}BuildConfig
                 String generateBuildConfigTaskName = variant.getVariantData().getScope().getGenerateBuildConfigTask().name
-                def generateBuildConfigTask = project.tasks.getByName(generateBuildConfigTaskName)
+                def generateBuildConfigTask = project.tasks.getByName(generateBuildConfigTaskName)  //生成BuildConfig.java的task
                 if (generateBuildConfigTask) {
-                    generateHostConfigTask.dependsOn generateBuildConfigTask
+                    /*
+                        因为generateHostConfigTask中创建的RePluginHostConfig.java希望放置到编译输出目录
+                        ..\replugin-sample\host\app\build\generated\source\buildConfig\{productFlavors}\{buildTypes}\...下，
+                        所以此task依赖于生成 BuildConfig.java 的task并设置为 BuildConfigTask 执行完后，就执行HostConfigTask
+                     */
+
+                    generateHostConfigTask.dependsOn generateBuildConfigTask  //generateHostConfigTask 依赖 generateBuildConfigTask
+
+                    //https://blog.csdn.net/lzyzsd/article/details/46935405
+                    //finalizedBy 表示执行命令 gradle generateBuildConfigTask 运行后 运行 generateHostConfigTask,
+                    // 不必直接 gralde generateHostConfigTask来运行 generateHostConfigTask
                     generateBuildConfigTask.finalizedBy generateHostConfigTask
                 }
 
-                //json generate task
+                //json generate task        rpGenerate{productFlavor}{Debug/Release}BuiltinJson
                 def generateBuiltinJsonTaskName = scope.getTaskName(AppConstant.TASK_GENERATE, "BuiltinJson")
                 def generateBuiltinJsonTask = project.task(generateBuiltinJsonTaskName)
 
@@ -88,10 +119,16 @@ public class Replugin implements Plugin<Project> {
                 }
                 generateBuiltinJsonTask.group = AppConstant.TASKS_GROUP
 
-                //depends on mergeAssets Task
+                //depends on mergeAssets Task             merge{productFlavor}{Debug/Release}Assets
                 String mergeAssetsTaskName = variant.getVariantData().getScope().getMergeAssetsTask().name
                 def mergeAssetsTask = project.tasks.getByName(mergeAssetsTaskName)
                 if (mergeAssetsTask) {
+
+                    /*
+                    因为此task中创建的 plugins-builtin.json 希望放置到编译输出目录...\replugin-sample\host\app\build\intermediates\assets\{productFlavors}\{buildTypes}\...下，
+                    所以此task依赖于merge assets文件 的task并设置为 mergeAssetsTask 执行完后，就执行BuiltinJsonTask。
+                     */
+
                     generateBuiltinJsonTask.dependsOn mergeAssetsTask
                     mergeAssetsTask.finalizedBy generateBuiltinJsonTask
                 }
@@ -125,10 +162,12 @@ public class Replugin implements Plugin<Project> {
         }
     }
 
-    // 添加 【查看所有插件信息】 任务
+    // 添加 【查看所有插件信息】 任务，task并未挂到android gradle task上，即task不会执行，这个task是方便调试时查看插件信息的
     def addShowPluginTask(def variant) {
         def variantData = variant.variantData
         def scope = variantData.scope
+
+        //rpShowPlugins{productFlavor}{Debug/Release} 任务名
         def showPluginsTaskName = scope.getTaskName(AppConstant.TASK_SHOW_PLUGIN, "")
         def showPluginsTask = project.task(showPluginsTaskName)
 
