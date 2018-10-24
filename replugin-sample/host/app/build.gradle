@@ -32,6 +32,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        baidu {}
+        QQ {}
+    }
 }
 
 apply plugin: 'replugin-host-gradle'
