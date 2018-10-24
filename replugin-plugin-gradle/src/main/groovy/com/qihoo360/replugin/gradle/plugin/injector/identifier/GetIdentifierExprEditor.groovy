@@ -36,9 +36,19 @@ public class GetIdentifierExprEditor extends ExprEditor {
 
         if (clsName.equalsIgnoreCase('android.content.res.Resources')) {
             if (methodName == 'getIdentifier') {
+
+                //edit(...)中，遍历到调用方为android.content.res.Resources且方法为getIdentifier的MethodCall，动态适配这些MethodCall中的方法参数
+                //1）调用原型： int id = res.getIdentifier("com.qihoo360.replugin.sample.demo2:layout/from_demo1", null, null);
+                //2）replace statement：'{ $3 = \"' + CommonData.appPackage + '\"; ' +'$_ = $proceed($$);' + ' }'，
+                // 为特殊变量$3赋值，即动态修改参数3的值为插件的包名；
+                // '$_ = $proceed($$);'表示按原样调用。
+
                 m.replace('{ $3 = \"' + CommonData.appPackage + '\"; ' +
                         '$_ = $proceed($$);' +
                         ' }')
+
+                // GetIdentifierCall => E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\exploded-aar\0848edb7126d45045f7ba46b11a297f3b693dd59\class\com\qihoo360\replugin\c.class getIdentifier():-1
+                //GetIdentifierCall => E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\exploded-aar\0848edb7126d45045f7ba46b11a297f3b693dd59\class\com\qihoo360\replugin\c.class getIdentifier():-1
                 println " GetIdentifierCall => ${filePath} ${methodName}():${m.lineNumber}"
             }
         }

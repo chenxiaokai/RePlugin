@@ -79,9 +79,13 @@ public class ReClassTransform extends Transform {
         if (rootLocation == null) {
             throw new GradleException("can't get transform root location")
         }
+
+        //>>> rootLocation: E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\transforms\___ReClass___\release
         println ">>> rootLocation: ${rootLocation}"
         // Compatible with path separators for window and Linux, and fit split param based on 'Pattern.quote'
         def variantDir = rootLocation.absolutePath.split(getName() + Pattern.quote(File.separator))[1]
+
+        //>>> variantDir: release
         println ">>> variantDir: ${variantDir}"
 
         CommonData.appModule = config.appModule
@@ -212,6 +216,10 @@ public class ReClassTransform extends Transform {
         def pool = new ClassPool(true)
         // 添加编译时需要引用的到类到 ClassPool, 同时记录要修改的 jar 到 includeJars
         Util.getClassPaths(project, globalScope, inputs, includeJars, map).each {
+            //C:\Users\lenovo\AppData\Local\Android\Sdk\platforms\android-25\android.jar
+            //E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\exploded-aar\0848edb7126d45045f7ba46b11a297f3b693dd59\class
+            //E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\exploded-aar\87c8f13e0cddc08265c43942441d25e39f1c0865\class
+            //E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\classes\release
             println "    $it"
             pool.insertClassPath(it)
         }
@@ -260,6 +268,16 @@ public class ReClassTransform extends Transform {
      * 处理目录中的 class 文件
      */
     def handleDir(ClassPool pool, DirectoryInput input, IClassInjector injector, Object config) {
+        /*
+
+        plugin-demo1源代码编译后放在下面目录
+
+        >>> Handle Dir: E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\classes\release
+        >>> Handle Dir: E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\classes\release
+        >>> Handle Dir: E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\classes\release
+        >>> Handle Dir: E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\classes\release
+        >>> Handle Dir: E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\classes\release
+         */
         println ">>> Handle Dir: ${input.file.absolutePath}"
         injector.injectClass(pool, input.file.absolutePath, config)
     }
@@ -278,7 +296,7 @@ public class ReClassTransform extends Transform {
      */
     def welcome() {
         println '\n'
-        60.times { print '=' }
+        60.times { print '=' }   //打60个 =
         println '\n                    replugin-plugin-gradle'
         60.times { print '=' }
         println("""

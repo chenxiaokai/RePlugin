@@ -46,10 +46,21 @@ public class ProviderExprEditor extends ExprEditor {
 
     def private replaceStatement(MethodCall methodCall, String method, def line) {
         if (methodCall.getMethodName() == 'registerContentObserver' || methodCall.getMethodName() == 'notifyChange') {
+
+            //替换registerContentObserver或notifyChange :
+            //replace statement：'{' + PROVIDER_CLASS + '.' + method + '(com.qihoo360.replugin.RePlugin.getPluginContext(), $$);}'，唯一特别的地方就是入参中传入了特定的context。
+
             methodCall.replace('{' + PROVIDER_CLASS + '.' + method + '(com.qihoo360.replugin.RePlugin.getPluginContext(), $$);}')
         } else {
+
+            //替换query 等方法:
+            //replace statement：'{$_ = ' + PROVIDER_CLASS + '.' + method + '(com.qihoo360.replugin.RePlugin.getPluginContext(), $$);}'，
+            // 因为方法调用是有返回值的，所以statement必须将返回值赋值给特殊变量$_，这是javassist.expr.MethodCall方法的明确要求。
+
             methodCall.replace('{$_ = ' + PROVIDER_CLASS + '.' + method + '(com.qihoo360.replugin.RePlugin.getPluginContext(), $$);}')
         }
+
+        //>>> Replace: E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\classes\release\com\qihoo360\replugin\sample\demo1\MainActivity$19.class Provider.insert():237
         println ">>> Replace: ${filePath} Provider.${method}():${line}"
     }
 }

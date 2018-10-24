@@ -52,18 +52,31 @@ public class LocalBroadcastInjector extends BaseInjector {
         }
 
         Util.newSection()
+        //E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\exploded-aar\0848edb7126d45045f7ba46b11a297f3b693dd59\class
+        //E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\exploded-aar\87c8f13e0cddc08265c43942441d25e39f1c0865\class
+        //E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\classes\release
         println dir
 
+        //表示从Paths.get(dir)代表的节点开始遍历文件系统
         Files.walkFileTree(Paths.get(dir), new SimpleFileVisitor<Path>() {
             @Override
             FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
 
                 String filePath = file.toString()
+
+                /*
+                ----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/exploded-aar/c4437ccfa7d4073e0aa89c00295dd3fa30a1502e/class/com/qihoo360/replugin/sample/library/LibMainActivity.class
+                ...
+                ----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$5.class
+                 */
+                System.out.println("----cxk----> filePath = "+filePath)
+
                 editor.filePath = filePath
 
                 def stream, ctCls
                 try {
                     // 不处理 LocalBroadcastManager.class
+                    //保护性逻辑，避免替换掉v4包中的源码实现
                     if (filePath.contains('android/support/v4/content/LocalBroadcastManager')) {
                         println "Ignore ${filePath}"
                         return super.visitFile(file, attrs)

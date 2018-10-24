@@ -32,7 +32,7 @@ public class ReClassPlugin implements Plugin<Project> {
 
     @Override
     public void apply(Project project) {
-
+        //< replugin-plugin-v2.2.0 > Welcome to replugin world !
         println "${AppConstant.TAG} Welcome to replugin world ! "
 
         /* Extensions */
@@ -49,23 +49,32 @@ public class ReClassPlugin implements Plugin<Project> {
             def startHostAppTask = null
             def restartHostAppTask = null
 
+            //android.applicationVariants.all，遍历android extension的Application variants 组合。
+            // android gradle 插件，会对最终的包以多个维度进行组合。ApplicationVariant的组合 = {ProductFlavor} x {BuildType} 种组合.
             android.applicationVariants.all { variant ->
+
+                //new PluginDebugger(project, config, variant)，初始化PluginDebugger类实例，
+                // 主要配置了最终生成的插件应用的文件路径，以及adb文件的路径，是为了后续基于adb命令做push apk到SD卡上做准备。
                 PluginDebugger pluginDebugger = new PluginDebugger(project, config, variant)
 
                 def variantData = variant.variantData
                 def scope = variantData.scope
 
+                //def assembleTask = variant.getAssemble()，获取assemble task(即打包apk的task)，后续的task需要依赖此task，
+                // 比如安装插件的task，肯定要等到assemble task打包生成apk后，才能去执行。
                 def assembleTask = variant.getAssemble()
 
                 def installPluginTaskName = scope.getTaskName(AppConstant.TASK_INSTALL_PLUGIN, "")
+                //生成installPluginTask 的gradle task 名字，并调用project的task()方法创建此Task。然后指定此task的任务内容：
                 def installPluginTask = project.task(installPluginTaskName)
 
                 installPluginTask.doLast {
-                    pluginDebugger.startHostApp()
-                    pluginDebugger.uninstall()
-                    pluginDebugger.forceStopHostApp()
-                    pluginDebugger.startHostApp()
-                    pluginDebugger.install()
+                    //流程：启动宿主 -> 卸载插件 -> 强制停止宿主 -> 启动宿主 -> 安装插件
+                    pluginDebugger.startHostApp() //启动宿主
+                    pluginDebugger.uninstall() //卸载插件
+                    pluginDebugger.forceStopHostApp() //强制停止宿主
+                    pluginDebugger.startHostApp() //启动宿主
+                    pluginDebugger.install() //安装插件
                 }
                 installPluginTask.group = AppConstant.TASKS_GROUP
 
@@ -131,6 +140,7 @@ public class ReClassPlugin implements Plugin<Project> {
 
             CommonData.appPackage = android.defaultConfig.applicationId
 
+            //>>> APP_PACKAGE com.qihoo360.replugin.sample.demo1
             println ">>> APP_PACKAGE " + CommonData.appPackage
 
             def transform = new ReClassTransform(project)

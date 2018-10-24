@@ -131,6 +131,7 @@ class PluginDebugger {
      * 启动宿主app
      * @return 是否命令执行成功
      */
+    //pluginDebugger 内的方法实现：基于adb shell + am 命令，实现 发送广播，push apk 等功能
     public boolean startHostApp() {
 
         if (isConfigNull()) {

@@ -47,6 +47,8 @@ public class ManifestAPI {
             //首字母大写进行拼接
             variantName += it.capitalize()
         }
+
+        //>>> variantName:Release
         println ">>> variantName:${variantName}"
 
         //获取processManifestTask
@@ -73,7 +75,9 @@ public class ManifestAPI {
             }
 
             //打印
+            // manifestOutputFile:E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\manifests\full\release\AndroidManifest.xml true
             println " manifestOutputFile:${manifestOutputFile} ${manifestOutputFile.exists()}"
+            // instantRunManifestOutputFile:E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\manifests\instant-run\release\AndroidManifest.xml false
             println " instantRunManifestOutputFile:${instantRunManifestOutputFile} ${instantRunManifestOutputFile.exists()}"
 
             //先设置为正常的manifest
@@ -101,6 +105,7 @@ public class ManifestAPI {
                 println ' AndroidManifest.xml not exist'
             }
             //输出路径
+            // AndroidManifest.xml 路径:E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\manifests\full\release\AndroidManifest.xml
             println " AndroidManifest.xml 路径：$result"
 
             return result.absolutePath

@@ -27,6 +27,7 @@ import java.nio.file.attribute.BasicFileAttributes
 /**
  * @author RePlugin Team
  */
+//ProviderInjector 替换 插件中的 ContentResolver 调用代码 为 插件库的调用代码
 public class ProviderInjector extends BaseInjector {
 
     // 处理以下方法
@@ -63,6 +64,9 @@ public class ProviderInjector extends BaseInjector {
         }
 
         Util.newSection()
+        //E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\exploded-aar\0848edb7126d45045f7ba46b11a297f3b693dd59\class
+        //E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\exploded-aar\87c8f13e0cddc08265c43942441d25e39f1c0865\class
+        //E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\classes\release
         println dir
 
         Files.walkFileTree(Paths.get(dir), new SimpleFileVisitor<Path>() {
