@@ -38,11 +38,11 @@ buildscript {
     }
 }
 
-group = 'com.qihoo360.replugin'  // 组名
+//group = 'com.qihoo360.replugin'  // 组名
 String classPath = ".src.main.groovy.com.qihoo360.replugin.gradle.host.AppConstant".replace(".", java.io.File.separator)
 String verPath = "${project.projectDir}" + classPath + ".groovy"
 String verLine = new File(verPath).filterLine { it =~ /def static final VER =/ }
-version = "${verLine.split("\"")[1]}" // 版本
+//version = "${verLine.split("\"")[1]}" // 版本
 //红色醒目打印显示版本号
 java.lang.System.err.println "version=${version}"
 
@@ -96,21 +96,33 @@ artifacts {
     archives sourcesJar, javadocJar
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            if (plugins.hasPlugin('war')) {
-                from components.web
-            } else {
-                from components.java
-            }
+//publishing {
+//    publications {
+//        mavenJava(MavenPublication) {
+//            if (plugins.hasPlugin('war')) {
+//                from components.web
+//            } else {
+//                from components.java
+//            }
+//
+//            artifact sourcesJar
+//            artifact javadocJar
+//        }
+//    }
+//}
+//
+//apply from: 'bintray.gradle'
 
-            artifact sourcesJar
-            artifact javadocJar
+//弄成本地库
+group = "com.host.gradle"
+version "1.0.0"
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../hostGradleRepo'))
         }
     }
 }
-
-apply from: 'bintray.gradle'
 
 

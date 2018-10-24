@@ -8,6 +8,7 @@ RePlugin Host Gradle是一个Gradle插件，由 **主程序** 负责引入。
 
 * 生成带 RePlugin 插件坑位的 AndroidManifest.xml（允许自定义数量）
 * 生成HostBuildConfig类，方便插件框架读取并自定义其属性
+* 生成 plugins-builtin.json，json中含有插件应用的信息，包名，插件名，插件路径等。
 
 开发者需要依赖此Gradle插件，以实现对RePlugin的接入。请参见WiKi以了解接入方法。
 
