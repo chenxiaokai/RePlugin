@@ -34,24 +34,25 @@ public abstract class PluginActivity extends Activity {
 
     @Override
     protected void attachBaseContext(Context newBase) {
+        //插件的Activity创建成功后通过此方法获取其base Context
         newBase = RePluginInternal.createActivityContext(this, newBase);
         super.attachBaseContext(newBase);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //
+        //设置主题，ClassLoader
         RePluginInternal.handleActivityCreateBefore(this, savedInstanceState);
 
         super.onCreate(savedInstanceState);
 
-        //
+        //记录和管理坑位，填充一些必要的属性给Activity对象
         RePluginInternal.handleActivityCreate(this, savedInstanceState);
     }
 
     @Override
     protected void onDestroy() {
-        //
+        //移除坑位持有
         RePluginInternal.handleActivityDestroy(this);
 
         super.onDestroy();

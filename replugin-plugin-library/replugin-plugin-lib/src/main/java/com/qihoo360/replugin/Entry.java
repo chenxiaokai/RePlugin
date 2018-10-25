@@ -37,7 +37,7 @@ public class Entry {
     public static final IBinder create(Context context, ClassLoader cl, IBinder manager) {
         // 初始化插件框架
         RePluginFramework.init(cl);
-        // 初始化Env
+        // 初始化Env， 缓存Application，ClassLoader，IBinder接口
         RePluginEnv.init(context, cl, manager);
 
         return new IPlugin.Stub() {

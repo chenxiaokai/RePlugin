@@ -157,7 +157,8 @@ class PluginProcessPer extends IPluginClient.Stub {
             }
             loadPlugin = mDefaultPlugin.mInfo.getName();
         }
-        //
+
+        //主逻辑是 bindActivity(loadPlugin, process, target, intent)
         String container = bindActivity(loadPlugin, process, target, intent);
         if (LOG) {
             LogDebug.d(PLUGIN_TAG, "PACM: eval plugin " + loadPlugin + ", target=" + target + ", container=" + container);
@@ -288,7 +289,7 @@ class PluginProcessPer extends IPluginClient.Stub {
         /* 获取 Container */
         String container;
 
-        // 自定义进程
+        // 自定义进程 mACM.alloc2  aACM.alloc 分配坑位
         if (ai.processName.contains(PluginProcessHost.PROCESS_PLUGIN_SUFFIX2)) {
             String processTail = PluginProcessHost.processTail(ai.processName);
             container = mACM.alloc2(ai, plugin, activity, process, intent, processTail);

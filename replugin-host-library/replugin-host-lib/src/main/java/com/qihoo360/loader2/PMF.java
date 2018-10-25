@@ -66,14 +66,27 @@ public class PMF {
     public static final void init(Application application) {
         setApplicationContext(application);
 
+        //初始化内部HandlerThread 保存进程名和id
         PluginManager.init(application);
 
+        // 创建插件管理者
+        // 内部创建了PluginCommImpl, PluginLibraryInternalProxy等接口实现
+        // 各种坑名集合
+        // PluginProcessPer 进程间通信有包含了:
+            // PluginServiceServer 【负责Server端的服务调用，提供等工作，是服务的提供方，核心类之一】
+            // PluginContainers 【插件容器】，根据LaunchModeStates初始化各种坑位
         sPluginMgr = new PmBase(application);
+
+        // 填充插件mPlugins集合，加载默认插件等
         sPluginMgr.init();
 
+        //getLocal 对应 PluginCommImpl包含: query, load, startActivity, getActivityInfo等操作
         Factory.sPluginManager = PMF.getLocal();
+
+        //getInternal 对应 PluginLibraryInternalProxy 内部框架使用，内部实际实现startActivity等
         Factory2.sPLProxy = PMF.getInternal();
 
+        //Hook 住 ClassLoader
         PatchClassLoaderUtils.patch(application);
     }
 

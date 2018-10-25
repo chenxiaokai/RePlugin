@@ -45,6 +45,7 @@ import static com.qihoo360.replugin.helper.LogRelease.LOGR;
  *
  * @author RePlugin Team
  */
+//宿主App中的Loader，继承PathClassLoader，也是唯一Hook住系统的Loader。
 public class RePluginClassLoader extends PathClassLoader {
 
     private static final String TAG = "RePluginClassLoader";
@@ -144,11 +145,12 @@ public class RePluginClassLoader extends PathClassLoader {
     protected Class<?> loadClass(String className, boolean resolve) throws ClassNotFoundException {
         //
         Class<?> c = null;
+        //主力这里hook点，先使用插件的PluginDexClassLoader加载
         c = PMF.loadClass(className, resolve);
         if (c != null) {
             return c;
         }
-        //
+        //只有插件没有找到相应类，才使用系统原来的PathClassLoader加载宿主中的类
         try {
             c = mOrig.loadClass(className);
             // 只有开启“详细日志”才会输出，防止“刷屏”现象

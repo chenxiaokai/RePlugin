@@ -45,18 +45,19 @@ public class IPC {
     private static String sPackageName;
     private static String sPersistentProcessName;
 
-    private static boolean sIsPersistentProcess;
-    private static boolean sIsUIProcess;
+    private static boolean sIsPersistentProcess;  //是否是常驻进程
+    private static boolean sIsUIProcess;  //是否是UI进程
 
     /**
      * [HIDE] 外界请不要调用此方法
      */
     public static void init(Context context) {
+        //当前进程名
         sCurrentProcess = SysUtils.getCurrentProcessName();
         sCurrentPid = Process.myPid();
         sPackageName = context.getApplicationInfo().packageName;
 
-        // 设置最终的常驻进程名
+        // 设置最终的常驻进程名 :GuardService
         if (HostConfigHelper.PERSISTENT_ENABLE) {
             String cppn = HostConfigHelper.PERSISTENT_NAME;
             if (!TextUtils.isEmpty(cppn)) {

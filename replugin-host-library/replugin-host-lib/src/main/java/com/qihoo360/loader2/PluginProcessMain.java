@@ -361,7 +361,7 @@ public class PluginProcessMain {
     static final void connectToHostSvc() {
         Context context = PMF.getApplicationContext();
 
-        //
+        //获取与Persistent进程通信的IBinder对象
         IBinder binder = PluginProviderStub.proxyFetchHostBinder(context);
         if (LOG) {
             LogDebug.d(PLUGIN_TAG, "host binder = " + binder);

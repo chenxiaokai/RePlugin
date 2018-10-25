@@ -44,7 +44,7 @@ import dalvik.system.DexClassLoader;
  *
  * @author RePlugin Team
  */
-
+//每一个插件都会有一个PluginDexClassLoader
 public class PluginDexClassLoader extends DexClassLoader {
 
     private static final String TAG = "PluginDexClassLoader";
@@ -91,6 +91,7 @@ public class PluginDexClassLoader extends DexClassLoader {
         }
     }
 
+    //当自己的loadClass方法找不到类时，从宿主Loader中加载。
     @Override
     protected Class<?> loadClass(String className, boolean resolve) throws ClassNotFoundException {
         // 插件自己的Class。从自己开始一直到BootClassLoader，采用正常的双亲委派模型流程，读到了就直接返回

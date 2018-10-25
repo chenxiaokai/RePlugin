@@ -159,9 +159,37 @@ public class PluginProviderStub {
      * @return
      */
     private static final IBinder proxyFetchHostBinder(Context context, String selection) {
-        //
+        /*
+        Host工程生成的坑位
+        <provider
+                android:name="com.qihoo360.replugin.component.process.ProcessPitProviderPersist"
+                                       applicationId 是Host工程的包名
+                android:authorities="${applicationId}.loader.p.main"
+                android:exported="false"
+                android:process=":GuardService" />
+
+            <provider
+                android:name="com.qihoo360.replugin.component.process.ProcessPitProviderPersist"
+                android:exported="false"
+                android:process=":GuardService"
+                android:authorities="com.qihoo360.replugin.sample.host.loader.p.main" />
+
+         ProcessPitProviderPersist第一次访问并没有运行起来，于是Android系统会自动启动它。由于在 :GuardService进程中，所有会启动
+         :GuardService进程
+
+         有三点你需要知道：
+
+            第一，默认情况下，GuardService会被当作Persistent进程的名字，在IPC.init()函数中会用这个名字来判断当前进程是不是Persistent进程。
+
+            第二，有很多坑位组件使用android:process=":GuardService"属性，因此如果Persistent进程不小心被杀掉了，
+                  在任何需要启动这些坑位组件的地方都会将Persistent进程重新启动起来。
+
+            第三，系统在启动新进程的时候，会在新进程中执行RepluginApplication的初始化，所以以上提到的流程都会在这个进程中执行一遍，
+                 但是因为在PmBase.init()函数中有一个条件判断IPC.isPersistentProcess()，Persistent进程会执行和UI进程不同的代码路径。
+         */
         Cursor cursor = null;
         try {
+            //ProcessPitProviderPersist.URI => com.qihoo360.replugin.sample.host.loader.p.main
             Uri uri = ProcessPitProviderPersist.URI;
             cursor = context.getContentResolver().query(uri, PROJECTION_MAIN, selection, null, null);
             if (cursor == null) {

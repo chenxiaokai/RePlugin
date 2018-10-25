@@ -957,10 +957,12 @@ public class RePlugin {
                 return;
             }
 
+            //保留Application
             RePluginInternal.init(app);
             sConfig = config;
+            //初始化RePluginConfig中的默认callback和目录等
             sConfig.initDefaults(app);
-
+            //初始化进程相关
             IPC.init(app);
 
             // 打印当前内存占用情况
@@ -970,6 +972,8 @@ public class RePlugin {
             }
 
             // 初始化HostConfigHelper（通过反射HostConfig来实现）
+            // 主要从宿主的 RePluginHostCongfig 中获取一些字段值
+            // RepluginHostConfig 文件由 replugin-host-gradle 自动生成
             // NOTE 一定要在IPC类初始化之后才使用
             HostConfigHelper.init();
 
@@ -977,9 +981,12 @@ public class RePlugin {
             AppVar.sAppContext = app;
 
             // Plugin Status Controller
+            // 用来管理插件的状态: 正常运行，被禁用，还是其他情况
             PluginStatusController.setAppContext(app);
 
+            //初始化框架和主程序接口代码
             PMF.init(app);
+            // 开始加载默认插件等
             PMF.callAttach();
 
             sAttached = true;
@@ -992,13 +999,15 @@ public class RePlugin {
          * @throws IllegalStateException 若没有调用attachBaseContext，则抛出此异常
          * @see Application#onCreate()
          */
+        //这里主要是切换handler到主线程，注册各种广播接收监听，如增加插件、卸载插件、更新插件
         public static void onCreate() {
             if (!sAttached) {
                 throw new IllegalStateException();
             }
 
+            //切换任务到当前Handler
             Tasks.init();
-
+            //注册广播接受者，这对插件更新卸载等
             PMF.callAppCreate();
 
             // 注册监听PluginInfo变化的广播以接受来自常驻进程的更新

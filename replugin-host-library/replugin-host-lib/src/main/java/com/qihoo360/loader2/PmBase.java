@@ -68,6 +68,7 @@ import static com.qihoo360.replugin.packages.PluginInfoUpdater.ACTION_UNINSTALL_
 /**
  * @author RePlugin Team
  */
+//RePlugin常用mPluginMgr变量表示，可以看作插件管理者。初始化插件、加载插件等一般都是从它开始。
 class PmBase {
 
     private static final String TAG = "PmBase";
@@ -206,6 +207,7 @@ class PmBase {
         // TODO init
         //init(context, this);
 
+        //填充provider 和 services 坑位名
         if (PluginManager.sPluginProcessIndex == IPluginManager.PROCESS_UI || PluginManager.isPluginProcess()) {
             String suffix;
             if (PluginManager.sPluginProcessIndex == IPluginManager.PROCESS_UI) {
@@ -219,13 +221,13 @@ class PmBase {
             mContainerServices.add(IPC.getPackageName() + CONTAINER_SERVICE_PART + suffix);
         }
 
-        //
+        //IBinder 那个插件的进程通信类，包含了PluginContainers，插件容器管理类的初始化
         mClient = new PluginProcessPer(context, this, PluginManager.sPluginProcessIndex, mContainerActivities);
 
-        //
+        //本地插件管理器
         mLocal = new PluginCommImpl(context, this);
 
-        //
+        //插件内部Activity管理器
         mInternal = new PluginLibraryInternalProxy(this);
     }
 
@@ -233,6 +235,7 @@ class PmBase {
 
         RePlugin.getConfig().getCallbacks().initPnPluginOverride();
 
+        //这里UI进程 和 persistent进程 会走不同的分支
         if (HostConfigHelper.PERSISTENT_ENABLE) {
             // （默认）“常驻进程”作为插件管理进程，则常驻进程作为Server，其余进程作为Client
             if (IPC.isPersistentProcess()) {
@@ -279,6 +282,9 @@ class PmBase {
         }
 
         mHostSvc = new PmHostSvc(mContext, this);
+
+        //连接到IPluginManagerServer,但因为IPluginManagerServer就运行在当前进程，因此这里不会进行Binder通信
+        //,而是直接调用PmHostSvc端fetchManagerServer方法
         PluginProcessMain.installHost(mHostSvc);
         PluginProcessMain.schedulePluginProcessLoop(PluginProcessMain.CHECK_STAGE1_DELAY);
 
@@ -290,11 +296,11 @@ class PmBase {
         // [Newest!] 使用全新的RePlugin APK方案
         // Added by Jiongxuan Zhang
         try {
-            List<PluginInfo> l = PluginManagerProxy.load();
+            List<PluginInfo> l = PluginManagerProxy.load();  //加载插件
             if (l != null) {
                 // 将"纯APK"插件信息并入总的插件信息表中，方便查询
                 // 这里有可能会覆盖之前在p-n中加入的信息。本来我们就想这么干，以"纯APK"插件为准
-                refreshPluginMap(l);
+                refreshPluginMap(l);  //将获取到的插件信息保存在 PmBase.mPlugins中
             }
         } catch (RemoteException e) {
             if (LOGR) {
@@ -312,7 +318,7 @@ class PmBase {
             LogDebug.d(PLUGIN_TAG, "list plugins from persistent process");
         }
 
-        // 1. 先尝试连接
+        // 1. 先尝试连接persistent 进程，并启动persistent进程
         PluginProcessMain.connectToHostSvc();
 
         // 2. 然后从常驻进程获取插件列表
@@ -325,7 +331,7 @@ class PmBase {
     private void refreshPluginsFromHostSvc() {
         List<PluginInfo> plugins = null;
         try {
-            plugins = PluginProcessMain.getPluginHost().listPlugins();
+            plugins = PluginProcessMain.getPluginHost().listPlugins();  //获取插件
         } catch (Throwable e) {
             if (LOGR) {
                 LogRelease.e(PLUGIN_TAG, "lst.p: " + e.getMessage(), e);
@@ -340,7 +346,7 @@ class PmBase {
                 LogDebug.d(PLUGIN_TAG, "plugins need to perform update operations");
             }
             try {
-                updatedPlugins = PluginManagerProxy.updateAllPlugins();
+                updatedPlugins = PluginManagerProxy.updateAllPlugins();  //更新插件
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -447,20 +453,22 @@ class PmBase {
     }
 
     final void callAttach() {
-        //
+        //获取RepluginClassLoader
         mClassLoader = PmBase.class.getClassLoader();
 
         // 挂载
         for (Plugin p : mPlugins.values()) {
-            p.attach(mContext, mClassLoader, mLocal);
+            p.attach(mContext, mClassLoader, mLocal);  //将获取插件信息和当前进程关联
         }
 
         // 加载默认插件
-        if (PluginManager.isPluginProcess()) {
+        if (PluginManager.isPluginProcess()) {  //如果插件启动了自己单独的进程，就会启动插件
             if (!TextUtils.isEmpty(mDefaultPluginName)) {
                 //
                 Plugin p = mPlugins.get(mDefaultPluginName);
                 if (p != null) {
+                    //通过 Plugind.callAppLocked() 创建插件的 Application，并初始化
+                    // 尝试在此处调用Application.onCreate方法
                     boolean rc = p.load(Plugin.LOAD_APP, true);
                     if (!rc) {
                         if (LOG) {

@@ -1,0 +1,449 @@
+上午11:28:41: Executing task 'assembleRelease'...
+
+Executing tasks: [assembleRelease]
+
+
+< replugin-plugin-v2.3.0 > Welcome to replugin world !
+>>> APP_PACKAGE com.qihoo360.replugin.sample.demo2
+
+:
+:replugin-sample:plugin:plugin-demo2:app:compileReleaseNdk NO-SOURCE
+:replugin-sample:plugin:plugin-demo2:app:compileReleaseSources
+:replugin-sample:plugin:plugin-demo2:app:lintVitalRelease
+:replugin-sample:plugin:plugin-demo2:app:mergeReleaseShaders
+:replugin-sample:plugin:plugin-demo2:app:compileReleaseShaders
+:replugin-sample:plugin:plugin-demo2:app:generateReleaseAssets
+:replugin-sample:plugin:plugin-demo2:app:mergeReleaseAssets
+:replugin-sample:plugin:plugin-demo2:app:transformClassesWith___ReClass___ForRelease
+
+
+============================================================
+                    replugin-plugin-gradle
+============================================================
+Add repluginPluginConfig to your build.gradle to enable this plugin:
+
+repluginPluginConfig {
+    // Name of 'App Module'，use '' if root dir is 'App Module'. ':app' as default.
+    appModule = ':app'
+
+    // Injectors ignored
+    // LoaderActivityInjector: Replace Activity to LoaderActivity
+    // ProviderInjector: Inject provider method call.
+    ignoredInjectors = ['LoaderActivityInjector']
+}
+
+
+>>> rootLocation: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/transforms/___ReClass___/release
+>>> variantDir: release
+----------------------------------------------------------------------------------------------------
+>>> Unzip Jar ...
+    [unzip] Expanding: /Users/chenxiaokai/.android/build-cache/e18eddecda56a399364b1cf1250857e0b0d2f8d8/output/jars/classes.jar into /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/2afeda8a420e1d60740f0608b59df2ac9705d859/class
+    [unzip] Expanding: /Users/chenxiaokai/.android/build-cache/5d72abdaafd2ab417f5976300850acb3ea745c42/output/jars/classes.jar into /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/96ee4a1a20c80d83e88901813a55f6b6995ec1df/class
+    [unzip] Expanding: /Users/chenxiaokai/.android/build-cache/d1224accf20d681f7cd5b2035abe9cf02cc49ef1/output/jars/classes.jar into /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/397748677da8771f055df3664bc68f55772d70cf/class
+    [unzip] Expanding: /Users/chenxiaokai/.android/build-cache/33b0c01904100b5974405d63d01473d9b8181234/output/jars/classes.jar into /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/523f2054bf9b99e5c79791542d559a1fad84582b/class
+    [unzip] Expanding: /Users/chenxiaokai/.android/build-cache/d7a795272472760c793b96698bbcd5e07d8e3dd7/output/jars/classes.jar into /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/6eb5318aae04b90dc5247f540871c6532c59698b/class
+    [unzip] Expanding: /Users/chenxiaokai/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar into /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/f6b02345f7db09d3cab359dd538ce2ff6c0dfdde/class
+    [unzip] Expanding: /Users/chenxiaokai/.android/build-cache/e4b6389d8ebe7df4f7ce95f73068ed281d7976c9/output/jars/classes.jar into /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/dfb62de55251f30feb97eafa92def47cdd853ee5/class
+    [unzip] Expanding: /Users/chenxiaokai/.android/build-cache/e2c0f04b15b3da283ff1d5ae5cc806d920e464b8/output/jars/classes.jar into /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/995d41a418b33030493c773672a2bb131ac5ea52/class
+    [unzip] Expanding: /Users/chenxiaokai/.android/build-cache/12f488c435762c01a9bc386c80188303464d9e28/output/jars/classes.jar into /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/d50b6b52ae56e1a584eaef7d62f10f46e4b5c192/class
+    [unzip] Expanding: /Users/chenxiaokai/.android/build-cache/c2b78a2bd7dca272220c52a3088c2d47588155ee/output/jars/classes.jar into /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/a2a68ebe5336cd35589bd5d92029f6cc51f0d3d7/class
+    [unzip] Expanding: /Users/chenxiaokai/.android/build-cache/f5137633f663d99671d654dfe80de95b2ac69419/output/jars/classes.jar into /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/4f3c49cffd225619a87490f33ed61dcfdc797790/class
+    [unzip] Expanding: /Users/chenxiaokai/.gradle/caches/modules-2/files-2.1/com.android.databinding/baseLibrary/2.3.3/eb3399988a52099b0127e27fb5bed666eca86ace/baseLibrary-2.3.3.jar into /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/cea607f260e55fce66ace239b13d7b62101d381a/class
+    [unzip] Expanding: /Users/chenxiaokai/.android/build-cache/f6e51ec59800f9bc78ad02175b27906b7e70a5a5/output/jars/classes.jar into /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/fd3b197680497488f5afaba3e9e1b32c413b90eb/class
+    [unzip] Expanding: /Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/jars/classes.jar into /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/352a47e7a4c96f7b8c280b650c1f66040a9e2084/class
+----------------------------------------------------------------------------------------------------
+>>> ClassPath:
+    /Users/chenxiaokai/Library/Android/sdk/platforms/android-25/android.jar
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/2afeda8a420e1d60740f0608b59df2ac9705d859/class
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/96ee4a1a20c80d83e88901813a55f6b6995ec1df/class
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/397748677da8771f055df3664bc68f55772d70cf/class
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/523f2054bf9b99e5c79791542d559a1fad84582b/class
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/6eb5318aae04b90dc5247f540871c6532c59698b/class
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/f6b02345f7db09d3cab359dd538ce2ff6c0dfdde/class
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/dfb62de55251f30feb97eafa92def47cdd853ee5/class
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/995d41a418b33030493c773672a2bb131ac5ea52/class
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/d50b6b52ae56e1a584eaef7d62f10f46e4b5c192/class
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/a2a68ebe5336cd35589bd5d92029f6cc51f0d3d7/class
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/4f3c49cffd225619a87490f33ed61dcfdc797790/class
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/cea607f260e55fce66ace239b13d7b62101d381a/class
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/fd3b197680497488f5afaba3e9e1b32c413b90eb/class
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/352a47e7a4c96f7b8c280b650c1f66040a9e2084/class
+    /Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/data-binding
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/classes/release
+----------------------------------------------------------------------------------------------------
+
+
+
+
+>>> Do: LoaderActivityInjector
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/e18eddecda56a399364b1cf1250857e0b0d2f8d8/output/jars/classes.jar
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/5d72abdaafd2ab417f5976300850acb3ea745c42/output/jars/classes.jar
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/d1224accf20d681f7cd5b2035abe9cf02cc49ef1/output/jars/classes.jar
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/33b0c01904100b5974405d63d01473d9b8181234/output/jars/classes.jar
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/d7a795272472760c793b96698bbcd5e07d8e3dd7/output/jars/classes.jar
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+>>> Handle Jar: /Users/chenxiaokai/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/e4b6389d8ebe7df4f7ce95f73068ed281d7976c9/output/jars/classes.jar
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/e2c0f04b15b3da283ff1d5ae5cc806d920e464b8/output/jars/classes.jar
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/12f488c435762c01a9bc386c80188303464d9e28/output/jars/classes.jar
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/c2b78a2bd7dca272220c52a3088c2d47588155ee/output/jars/classes.jar
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/f5137633f663d99671d654dfe80de95b2ac69419/output/jars/classes.jar
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+>>> Handle Jar: /Users/chenxiaokai/.gradle/caches/modules-2/files-2.1/com.android.databinding/baseLibrary/2.3.3/eb3399988a52099b0127e27fb5bed666eca86ace/baseLibrary-2.3.3.jar
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/f6e51ec59800f9bc78ad02175b27906b7e70a5a5/output/jars/classes.jar
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/jars/classes.jar
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+>>> Handle Dir: /Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/data-binding
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+>>> Handle Dir: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/classes/release
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+>>> Handle com.qihoo360.replugin.sample.demo2.MainActivity
+    Replace com.qihoo360.replugin.sample.demo2.MainActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
+>>> Handle com.qihoo360.replugin.sample.demo2.databinding.DataBindingActivity
+    Replace com.qihoo360.replugin.sample.demo2.databinding.DataBindingActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
+>>> Handle com.qihoo360.replugin.sample.demo2.activity.appcompat.AppCompatActivityDemo
+    Replace com.qihoo360.replugin.sample.demo2.activity.appcompat.AppCompatActivityDemo's SuperClass android.support.v7.app.AppCompatActivity to com.qihoo360.replugin.loader.a.PluginAppCompatActivity
+>>> Handle com.qihoo360.replugin.sample.demo2.activity.for_result.ForResultActivity
+
+
+
+>>> Do: LocalBroadcastInjector
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/e18eddecda56a399364b1cf1250857e0b0d2f8d8/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/2afeda8a420e1d60740f0608b59df2ac9705d859/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/5d72abdaafd2ab417f5976300850acb3ea745c42/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/96ee4a1a20c80d83e88901813a55f6b6995ec1df/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/d1224accf20d681f7cd5b2035abe9cf02cc49ef1/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/397748677da8771f055df3664bc68f55772d70cf/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/33b0c01904100b5974405d63d01473d9b8181234/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/523f2054bf9b99e5c79791542d559a1fad84582b/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/d7a795272472760c793b96698bbcd5e07d8e3dd7/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/6eb5318aae04b90dc5247f540871c6532c59698b/class
+>>> Handle Jar: /Users/chenxiaokai/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/f6b02345f7db09d3cab359dd538ce2ff6c0dfdde/class
+    [Warning] --> java.io.IOException: bad magic number: 4d616e69
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/e4b6389d8ebe7df4f7ce95f73068ed281d7976c9/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/dfb62de55251f30feb97eafa92def47cdd853ee5/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/e2c0f04b15b3da283ff1d5ae5cc806d920e464b8/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/995d41a418b33030493c773672a2bb131ac5ea52/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/12f488c435762c01a9bc386c80188303464d9e28/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/d50b6b52ae56e1a584eaef7d62f10f46e4b5c192/class
+Ignore /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/d50b6b52ae56e1a584eaef7d62f10f46e4b5c192/class/android/support/v4/content/LocalBroadcastManager$ReceiverRecord.class
+Ignore /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/d50b6b52ae56e1a584eaef7d62f10f46e4b5c192/class/android/support/v4/content/LocalBroadcastManager.class
+Ignore /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/d50b6b52ae56e1a584eaef7d62f10f46e4b5c192/class/android/support/v4/content/LocalBroadcastManager$BroadcastRecord.class
+Ignore /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/d50b6b52ae56e1a584eaef7d62f10f46e4b5c192/class/android/support/v4/content/LocalBroadcastManager$1.class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/c2b78a2bd7dca272220c52a3088c2d47588155ee/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/a2a68ebe5336cd35589bd5d92029f6cc51f0d3d7/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/f5137633f663d99671d654dfe80de95b2ac69419/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/4f3c49cffd225619a87490f33ed61dcfdc797790/class
+>>> Handle Jar: /Users/chenxiaokai/.gradle/caches/modules-2/files-2.1/com.android.databinding/baseLibrary/2.3.3/eb3399988a52099b0127e27fb5bed666eca86ace/baseLibrary-2.3.3.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/cea607f260e55fce66ace239b13d7b62101d381a/class
+    [Warning] --> java.io.IOException: bad magic number: 4d616e69
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/f6e51ec59800f9bc78ad02175b27906b7e70a5a5/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/fd3b197680497488f5afaba3e9e1b32c413b90eb/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/352a47e7a4c96f7b8c280b650c1f66040a9e2084/class
+>>> Handle Dir: /Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/data-binding
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/data-binding
+----cxk----> filePath = /Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/data-binding/bin-files/com.android.databinding.library.baseAdapters-com.android.databinding.library.baseAdapters-layoutinfo.bin
+    [Warning] --> java.io.IOException: bad magic number: aced0005
+----cxk----> filePath = /Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/data-binding/bin-files/com.android.databinding.library.baseAdapters-com.android.databinding.library.baseAdapters-br.bin
+    [Warning] --> java.io.IOException: bad magic number: aced0005
+----cxk----> filePath = /Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/data-binding/bin-files/com.android.databinding.library.baseAdapters-com.android.databinding.library.baseAdapters-setter_store.bin
+    [Warning] --> java.io.IOException: bad magic number: aced0005
+>>> Handle Dir: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/classes/release
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/classes/release
+
+
+
+
+>>> Do: ProviderInjector
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/e18eddecda56a399364b1cf1250857e0b0d2f8d8/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/2afeda8a420e1d60740f0608b59df2ac9705d859/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/5d72abdaafd2ab417f5976300850acb3ea745c42/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/96ee4a1a20c80d83e88901813a55f6b6995ec1df/class
+>>> Replace: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/96ee4a1a20c80d83e88901813a55f6b6995ec1df/class/android/support/v4/content/ContentResolverCompat$ContentResolverCompatImplBase.class Provider.query():47
+>>> Replace: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/96ee4a1a20c80d83e88901813a55f6b6995ec1df/class/android/support/v4/content/ContentResolverCompatJellybean.class Provider.query():33
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/d1224accf20d681f7cd5b2035abe9cf02cc49ef1/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/397748677da8771f055df3664bc68f55772d70cf/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/33b0c01904100b5974405d63d01473d9b8181234/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/523f2054bf9b99e5c79791542d559a1fad84582b/class
+    [Warning] --> javassist.CannotCompileException: [source error] openInputStream(android.content.Context,android.net.Uri) not found in com.qihoo360.replugin.loader.p.PluginProviderClient
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/d7a795272472760c793b96698bbcd5e07d8e3dd7/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/6eb5318aae04b90dc5247f540871c6532c59698b/class
+>>> Handle Jar: /Users/chenxiaokai/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/f6b02345f7db09d3cab359dd538ce2ff6c0dfdde/class
+    [Warning] --> java.io.IOException: bad magic number: 4d616e69
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/e4b6389d8ebe7df4f7ce95f73068ed281d7976c9/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/dfb62de55251f30feb97eafa92def47cdd853ee5/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/e2c0f04b15b3da283ff1d5ae5cc806d920e464b8/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/995d41a418b33030493c773672a2bb131ac5ea52/class
+    [Warning] --> java.lang.Exception: can not replace self
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/12f488c435762c01a9bc386c80188303464d9e28/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/d50b6b52ae56e1a584eaef7d62f10f46e4b5c192/class
+>>> Replace: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/d50b6b52ae56e1a584eaef7d62f10f46e4b5c192/class/android/support/v4/provider/DocumentsContractApi21.class Provider.query():58
+>>> Replace: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/d50b6b52ae56e1a584eaef7d62f10f46e4b5c192/class/android/support/v4/provider/DocumentsContractApi19.class Provider.query():150
+>>> Replace: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/d50b6b52ae56e1a584eaef7d62f10f46e4b5c192/class/android/support/v4/provider/DocumentsContractApi19.class Provider.query():167
+>>> Replace: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/d50b6b52ae56e1a584eaef7d62f10f46e4b5c192/class/android/support/v4/provider/DocumentsContractApi19.class Provider.query():192
+    [Warning] --> javassist.CannotCompileException: [source error] openInputStream(android.content.Context,android.net.Uri) not found in com.qihoo360.replugin.loader.p.PluginProviderClient
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/c2b78a2bd7dca272220c52a3088c2d47588155ee/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/a2a68ebe5336cd35589bd5d92029f6cc51f0d3d7/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/f5137633f663d99671d654dfe80de95b2ac69419/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/4f3c49cffd225619a87490f33ed61dcfdc797790/class
+>>> Handle Jar: /Users/chenxiaokai/.gradle/caches/modules-2/files-2.1/com.android.databinding/baseLibrary/2.3.3/eb3399988a52099b0127e27fb5bed666eca86ace/baseLibrary-2.3.3.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/cea607f260e55fce66ace239b13d7b62101d381a/class
+    [Warning] --> java.io.IOException: bad magic number: 4d616e69
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/f6e51ec59800f9bc78ad02175b27906b7e70a5a5/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/fd3b197680497488f5afaba3e9e1b32c413b90eb/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/352a47e7a4c96f7b8c280b650c1f66040a9e2084/class
+>>> Handle Dir: /Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/data-binding
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/data-binding
+    [Warning] --> java.io.IOException: bad magic number: aced0005
+    [Warning] --> java.io.IOException: bad magic number: aced0005
+    [Warning] --> java.io.IOException: bad magic number: aced0005
+>>> Handle Dir: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/classes/release
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/classes/release
+
+
+
+
+>>> Do: ProviderInjector2
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/e18eddecda56a399364b1cf1250857e0b0d2f8d8/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/2afeda8a420e1d60740f0608b59df2ac9705d859/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/5d72abdaafd2ab417f5976300850acb3ea745c42/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/96ee4a1a20c80d83e88901813a55f6b6995ec1df/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/d1224accf20d681f7cd5b2035abe9cf02cc49ef1/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/397748677da8771f055df3664bc68f55772d70cf/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/33b0c01904100b5974405d63d01473d9b8181234/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/523f2054bf9b99e5c79791542d559a1fad84582b/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/d7a795272472760c793b96698bbcd5e07d8e3dd7/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/6eb5318aae04b90dc5247f540871c6532c59698b/class
+>>> Handle Jar: /Users/chenxiaokai/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/f6b02345f7db09d3cab359dd538ce2ff6c0dfdde/class
+    [Warning] --> java.io.IOException: bad magic number: 4d616e69
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/e4b6389d8ebe7df4f7ce95f73068ed281d7976c9/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/dfb62de55251f30feb97eafa92def47cdd853ee5/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/e2c0f04b15b3da283ff1d5ae5cc806d920e464b8/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/995d41a418b33030493c773672a2bb131ac5ea52/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/12f488c435762c01a9bc386c80188303464d9e28/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/d50b6b52ae56e1a584eaef7d62f10f46e4b5c192/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/c2b78a2bd7dca272220c52a3088c2d47588155ee/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/a2a68ebe5336cd35589bd5d92029f6cc51f0d3d7/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/f5137633f663d99671d654dfe80de95b2ac69419/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/4f3c49cffd225619a87490f33ed61dcfdc797790/class
+>>> Handle Jar: /Users/chenxiaokai/.gradle/caches/modules-2/files-2.1/com.android.databinding/baseLibrary/2.3.3/eb3399988a52099b0127e27fb5bed666eca86ace/baseLibrary-2.3.3.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/cea607f260e55fce66ace239b13d7b62101d381a/class
+    [Warning] --> java.io.IOException: bad magic number: 4d616e69
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/f6e51ec59800f9bc78ad02175b27906b7e70a5a5/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/fd3b197680497488f5afaba3e9e1b32c413b90eb/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/352a47e7a4c96f7b8c280b650c1f66040a9e2084/class
+>>> Handle Dir: /Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/data-binding
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/data-binding
+    [Warning] --> java.io.IOException: bad magic number: aced0005
+    [Warning] --> java.io.IOException: bad magic number: aced0005
+    [Warning] --> java.io.IOException: bad magic number: aced0005
+>>> Handle Dir: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/classes/release
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/classes/release
+
+
+
+
+>>> Do: GetIdentifierInjector
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/e18eddecda56a399364b1cf1250857e0b0d2f8d8/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/2afeda8a420e1d60740f0608b59df2ac9705d859/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/5d72abdaafd2ab417f5976300850acb3ea745c42/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/96ee4a1a20c80d83e88901813a55f6b6995ec1df/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/d1224accf20d681f7cd5b2035abe9cf02cc49ef1/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/397748677da8771f055df3664bc68f55772d70cf/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/33b0c01904100b5974405d63d01473d9b8181234/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/523f2054bf9b99e5c79791542d559a1fad84582b/class
+ GetIdentifierCall => /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/523f2054bf9b99e5c79791542d559a1fad84582b/class/android/support/v7/widget/ResourcesWrapper.class getIdentifier():244
+ GetIdentifierCall => /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/523f2054bf9b99e5c79791542d559a1fad84582b/class/android/support/v7/widget/ResourcesWrapper.class getIdentifier():244
+ GetIdentifierCall => /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/523f2054bf9b99e5c79791542d559a1fad84582b/class/android/support/v7/widget/TintResources.class getIdentifier():244
+ GetIdentifierCall => /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/523f2054bf9b99e5c79791542d559a1fad84582b/class/android/support/v7/widget/SuggestionsAdapter.class getIdentifier():699
+ GetIdentifierCall => /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/523f2054bf9b99e5c79791542d559a1fad84582b/class/android/support/v7/widget/SuggestionsAdapter.class getIdentifier():699
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/d7a795272472760c793b96698bbcd5e07d8e3dd7/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/6eb5318aae04b90dc5247f540871c6532c59698b/class
+>>> Handle Jar: /Users/chenxiaokai/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/f6b02345f7db09d3cab359dd538ce2ff6c0dfdde/class
+    [Warning] --> java.io.IOException: bad magic number: 4d616e69
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/e4b6389d8ebe7df4f7ce95f73068ed281d7976c9/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/dfb62de55251f30feb97eafa92def47cdd853ee5/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/e2c0f04b15b3da283ff1d5ae5cc806d920e464b8/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/995d41a418b33030493c773672a2bb131ac5ea52/class
+ GetIdentifierCall => /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/995d41a418b33030493c773672a2bb131ac5ea52/class/com/qihoo360/replugin/c.class getIdentifier():-1
+ GetIdentifierCall => /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/995d41a418b33030493c773672a2bb131ac5ea52/class/com/qihoo360/replugin/c.class getIdentifier():-1
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/12f488c435762c01a9bc386c80188303464d9e28/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/d50b6b52ae56e1a584eaef7d62f10f46e4b5c192/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/c2b78a2bd7dca272220c52a3088c2d47588155ee/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/a2a68ebe5336cd35589bd5d92029f6cc51f0d3d7/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/f5137633f663d99671d654dfe80de95b2ac69419/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/4f3c49cffd225619a87490f33ed61dcfdc797790/class
+>>> Handle Jar: /Users/chenxiaokai/.gradle/caches/modules-2/files-2.1/com.android.databinding/baseLibrary/2.3.3/eb3399988a52099b0127e27fb5bed666eca86ace/baseLibrary-2.3.3.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/cea607f260e55fce66ace239b13d7b62101d381a/class
+    [Warning] --> java.io.IOException: bad magic number: 4d616e69
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/f6e51ec59800f9bc78ad02175b27906b7e70a5a5/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/fd3b197680497488f5afaba3e9e1b32c413b90eb/class
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/352a47e7a4c96f7b8c280b650c1f66040a9e2084/class
+>>> Handle Dir: /Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/data-binding
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/.android/build-cache/4c87ea52fae1cb721005b9d60e4942c8b25110ef/output/data-binding
+    [Warning] --> java.io.IOException: bad magic number: aced0005
+    [Warning] --> java.io.IOException: bad magic number: aced0005
+    [Warning] --> java.io.IOException: bad magic number: aced0005
+>>> Handle Dir: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/classes/release
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/classes/release
+----------------------------------------------------------------------------------------------------
+>>> Repackage...
+      [zip] Building zip: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/2afeda8a420e1d60740f0608b59df2ac9705d859/class.jar
+      [zip] Building zip: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/96ee4a1a20c80d83e88901813a55f6b6995ec1df/class.jar
+      [zip] Building zip: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/397748677da8771f055df3664bc68f55772d70cf/class.jar
+      [zip] Building zip: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/523f2054bf9b99e5c79791542d559a1fad84582b/class.jar
+      [zip] Building zip: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/6eb5318aae04b90dc5247f540871c6532c59698b/class.jar
+      [zip] Building zip: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/f6b02345f7db09d3cab359dd538ce2ff6c0dfdde/class.jar
+      [zip] Building zip: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/dfb62de55251f30feb97eafa92def47cdd853ee5/class.jar
+      [zip] Building zip: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/995d41a418b33030493c773672a2bb131ac5ea52/class.jar
+      [zip] Building zip: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/d50b6b52ae56e1a584eaef7d62f10f46e4b5c192/class.jar
+      [zip] Building zip: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/a2a68ebe5336cd35589bd5d92029f6cc51f0d3d7/class.jar
+      [zip] Building zip: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/4f3c49cffd225619a87490f33ed61dcfdc797790/class.jar
+      [zip] Building zip: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/cea607f260e55fce66ace239b13d7b62101d381a/class.jar
+      [zip] Building zip: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/fd3b197680497488f5afaba3e9e1b32c413b90eb/class.jar
+      [zip] Building zip: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo2/app/build/intermediates/exploded-aar/352a47e7a4c96f7b8c280b650c1f66040a9e2084/class.jar
+----------------------------------------------------------------------------------------------------
+:replugin-sample:plugin:plugin-demo2:app:transformClassesWithDexForRelease
+
+
+:replugin-sample:plugin:plugin-demo2:app:mergeReleaseJniLibFolders
+:replugin-sample:plugin:plugin-demo2:app:transformNativeLibsWithMergeJniLibsForRelease
+:replugin-sample:plugin:plugin-demo2:app:processReleaseJavaRes NO-SOURCE
+:replugin-sample:plugin:plugin-demo2:app:transformResourcesWithMergeJavaResForRelease
+:replugin-sample:plugin:plugin-demo2:app:packageRelease
+:replugin-sample:plugin:plugin-demo2:app:assembleRelease
+
+BUILD SUCCESSFUL in 31s
+37 actionable tasks: 37 executed
+上午11:29:13: Task execution finished 'assembleRelease'.
