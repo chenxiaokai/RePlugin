@@ -83,7 +83,6 @@ public class LoaderActivityInjector extends BaseInjector {
         //>>> Handle com.qihoo360.replugin.sample.demo1.activity.theme.ThemeBlackNoTitleBarActivity
         //>>> Handle com.qihoo360.replugin.sample.demo1.activity.theme.ThemeDialogActivity
         //>>> Handle com.qihoo360.replugin.sample.demo1.activity.theme.ThemeBlackNoTitleBarFullscreenActivity
-
         //>> Handle com.qihoo360.replugin.sample.demo1.activity.task_affinity.TAActivity1
         //>>> Handle com.qihoo360.replugin.sample.demo1.activity.task_affinity.TAActivity2
         //>>> Handle com.qihoo360.replugin.sample.demo1.activity.task_affinity.TAActivity3
@@ -91,7 +90,12 @@ public class LoaderActivityInjector extends BaseInjector {
         //>>> Handle com.qihoo360.replugin.sample.demo1.activity.single_instance.TIActivity1
         //>>> Handle com.qihoo360.replugin.sample.demo1.activity.single_top.SingleTopActivity1
         //>>> Handle com.qihoo360.replugin.sample.demo1.activity.intent_filter.IntentFilterDemoActivity1
+        //>>> Handle com.qihoo360.replugin.sample.demo1.activity.preference.PrefActivity1
+        //>>> Handle com.qihoo360.replugin.sample.demo1.activity.preference.PrefActivity2
+        //>>> Handle com.qihoo360.replugin.sample.demo1.activity.webview.WebViewActivity
         //>>> Handle com.qihoo360.replugin.sample.demo1.activity.for_result.ForResultActivity
+        //>>> Handle com.qihoo360.replugin.sample.demo1.activity.file_provider.FileProviderActivity
+        //>>> Handle com.qihoo360.replugin.sample.demo1.activity.notify_test.NotifyActivity
         println ">>> Handle $activity"
 
         def stream, ctCls
@@ -151,12 +155,18 @@ public class LoaderActivityInjector extends BaseInjector {
                 }
 
                 ctCls.writeFile(CommonData.getClassPath(ctCls.name))
+
                 //    Replace com.qihoo360.replugin.sample.library.LibMainActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
                 //    Replace com.qihoo360.replugin.sample.demo1.MainActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
                 //    Replace com.qihoo360.replugin.sample.demo1.BaseActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
                 //    Replace com.qihoo360.replugin.sample.demo1.activity.theme.ThemeBlackNoTitleBarActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
                 //    Replace com.qihoo360.replugin.sample.demo1.activity.theme.ThemeDialogActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
                 //    Replace com.qihoo360.replugin.sample.demo1.activity.theme.ThemeBlackNoTitleBarFullscreenActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
+                //    Replace com.qihoo360.replugin.sample.demo1.activity.preference.PrefActivity1's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
+                //    Replace com.qihoo360.replugin.sample.demo1.activity.preference.PrefActivity2's SuperClass android.preference.PreferenceActivity to com.qihoo360.replugin.loader.a.PluginPreferenceActivity
+                //    Replace com.qihoo360.replugin.sample.demo1.activity.webview.WebViewActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
+                //    Replace com.qihoo360.replugin.sample.demo1.activity.file_provider.FileProviderActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
+                //    Replace com.qihoo360.replugin.sample.demo1.activity.notify_test.NotifyActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
                 println "    Replace ${ctCls.name}'s SuperClass ${superCls.name} to ${targetSuperCls.name}"
             }
 

@@ -1,0 +1,323 @@
+上午10:41:15: Executing task 'assembleRelease'...
+
+Executing tasks: [assembleRelease]
+
+
+
+< replugin-plugin-v2.3.0 > Welcome to replugin world !
+>>> APP_PACKAGE com.qihoo360.replugin.sample.demo1
+
+
+
+:replugin-sample:plugin:plugin-demo1:app:compileReleaseJavaWithJavac
+:replugin-sample:plugin:plugin-demo1:app:compileReleaseNdk NO-SOURCE
+:replugin-sample:plugin:plugin-demo1:app:compileReleaseSources
+:replugin-sample:plugin:plugin-demo1:app:lintVitalRelease
+:replugin-sample:plugin:plugin-demo1:app:mergeReleaseShaders
+:replugin-sample:plugin:plugin-demo1:app:compileReleaseShaders
+:replugin-sample:plugin:plugin-demo1:app:generateReleaseAssets
+:replugin-sample:plugin:plugin-demo1:app:mergeReleaseAssets
+:replugin-sample:plugin:plugin-demo1:app:transformClassesWith___ReClass___ForRelease
+
+
+============================================================
+                    replugin-plugin-gradle
+============================================================
+Add repluginPluginConfig to your build.gradle to enable this plugin:
+
+repluginPluginConfig {
+    // Name of 'App Module'，use '' if root dir is 'App Module'. ':app' as default.
+    appModule = ':app'
+
+    // Injectors ignored
+    // LoaderActivityInjector: Replace Activity to LoaderActivity
+    // ProviderInjector: Inject provider method call.
+    ignoredInjectors = ['LoaderActivityInjector']
+}
+
+
+>>> rootLocation: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/transforms/___ReClass___/release
+>>> variantDir: release
+----------------------------------------------------------------------------------------------------
+>>> Unzip Jar ...
+    [unzip] Expanding: /Users/chenxiaokai/.android/build-cache/cc6defd1855b33fc6971c5185b40076b87465ec2/output/jars/classes.jar into /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/exploded-aar/c4437ccfa7d4073e0aa89c00295dd3fa30a1502e/class
+    [unzip] Expanding: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes.jar into /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes
+----------------------------------------------------------------------------------------------------
+>>> ClassPath:
+    /Users/chenxiaokai/Library/Android/sdk/platforms/android-25/android.jar
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/exploded-aar/c4437ccfa7d4073e0aa89c00295dd3fa30a1502e/class
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes
+    /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release
+
+
+----------------------------------------------------------------------------------------------------
+>>> Do: LoaderActivityInjector
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/cc6defd1855b33fc6971c5185b40076b87465ec2/output/jars/classes.jar
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+
+>>> Handle com.qihoo360.replugin.sample.library.LibMainActivity
+    Replace com.qihoo360.replugin.sample.library.LibMainActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
+
+>>> Handle Jar: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes.jar
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+>>> Handle Dir: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release
+>>> variantName:Release
+ manifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/manifests/full/release/AndroidManifest.xml true
+ instantRunManifestOutputFile:/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/manifests/instant-run/release/AndroidManifest.xml false
+ AndroidManifest.xml 路径：/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/manifests/full/release/AndroidManifest.xml
+
+>>> Handle com.qihoo360.replugin.sample.demo1.MainActivity
+    Replace com.qihoo360.replugin.sample.demo1.MainActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
+
+>>> Handle com.qihoo360.replugin.sample.demo1.activity.standard.StandardActivity
+    Replace com.qihoo360.replugin.sample.demo1.BaseActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
+
+>>> Handle com.qihoo360.replugin.sample.demo1.activity.theme.ThemeBlackNoTitleBarActivity
+    Replace com.qihoo360.replugin.sample.demo1.activity.theme.ThemeBlackNoTitleBarActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
+
+>>> Handle com.qihoo360.replugin.sample.demo1.activity.theme.ThemeDialogActivity
+    Replace com.qihoo360.replugin.sample.demo1.activity.theme.ThemeDialogActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
+
+>>> Handle com.qihoo360.replugin.sample.demo1.activity.theme.ThemeBlackNoTitleBarFullscreenActivity
+    Replace com.qihoo360.replugin.sample.demo1.activity.theme.ThemeBlackNoTitleBarFullscreenActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
+
+>>> Handle com.qihoo360.replugin.sample.demo1.activity.task_affinity.TAActivity1
+>>> Handle com.qihoo360.replugin.sample.demo1.activity.task_affinity.TAActivity2
+>>> Handle com.qihoo360.replugin.sample.demo1.activity.task_affinity.TAActivity3
+>>> Handle com.qihoo360.replugin.sample.demo1.activity.task_affinity.TAActivity4
+
+>>> Handle com.qihoo360.replugin.sample.demo1.activity.single_instance.TIActivity1
+>>> Handle com.qihoo360.replugin.sample.demo1.activity.single_top.SingleTopActivity1
+>>> Handle com.qihoo360.replugin.sample.demo1.activity.intent_filter.IntentFilterDemoActivity1
+>>> Handle com.qihoo360.replugin.sample.demo1.activity.preference.PrefActivity1
+    Replace com.qihoo360.replugin.sample.demo1.activity.preference.PrefActivity1's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
+
+>>> Handle com.qihoo360.replugin.sample.demo1.activity.preference.PrefActivity2
+    Replace com.qihoo360.replugin.sample.demo1.activity.preference.PrefActivity2's SuperClass android.preference.PreferenceActivity to com.qihoo360.replugin.loader.a.PluginPreferenceActivity
+
+>>> Handle com.qihoo360.replugin.sample.demo1.activity.webview.WebViewActivity
+    Replace com.qihoo360.replugin.sample.demo1.activity.webview.WebViewActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
+
+>>> Handle com.qihoo360.replugin.sample.demo1.activity.for_result.ForResultActivity
+>>> Handle com.qihoo360.replugin.sample.demo1.activity.file_provider.FileProviderActivity
+    Replace com.qihoo360.replugin.sample.demo1.activity.file_provider.FileProviderActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
+
+>>> Handle com.qihoo360.replugin.sample.demo1.activity.notify_test.NotifyActivity
+    Replace com.qihoo360.replugin.sample.demo1.activity.notify_test.NotifyActivity's SuperClass android.app.Activity to com.qihoo360.replugin.loader.a.PluginActivity
+
+
+
+
+
+>>> Do: LocalBroadcastInjector
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/cc6defd1855b33fc6971c5185b40076b87465ec2/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/exploded-aar/c4437ccfa7d4073e0aa89c00295dd3fa30a1502e/class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/exploded-aar/c4437ccfa7d4073e0aa89c00295dd3fa30a1502e/class/com/qihoo360/replugin/sample/library/LibMainActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/exploded-aar/c4437ccfa7d4073e0aa89c00295dd3fa30a1502e/class/com/qihoo360/replugin/sample/library/BuildConfig.class
+>>> Handle Jar: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/library/d$1.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/library/a$a.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/library/b.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/library/d.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/library/f.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/library/a.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/library/c.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/library/e.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/RePlugin$a.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/Entry.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/b.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/RePlugin.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/loader/s/PluginServiceClient$ProxyRePluginServiceClientVar.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/loader/s/PluginServiceClient.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/loader/a/PluginActivityGroup.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/loader/a/PluginExpandableListActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/loader/a/PluginActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/loader/a/PluginFragmentActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/loader/a/PluginListActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/loader/a/PluginPreferenceActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/loader/a/PluginTabActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/loader/a/PluginAppCompatActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/loader/b/PluginLocalBroadcastManager$ReceiverRecord.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/loader/b/PluginLocalBroadcastManager$ProxyLocalBroadcastManagerVar.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/loader/b/PluginLocalBroadcastManager$BroadcastRecord.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/loader/b/PluginLocalBroadcastManager.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/loader/b/PluginLocalBroadcastManager$1.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/loader/p/PluginProviderClient.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/loader/p/PluginProviderClient$ProxyRePluginProviderClientVar.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/d.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/model/PluginInfo.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/model/PluginInfo$a.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/model/PluginInfo$1.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/f.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/a.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/f$a.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/c.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/g.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/base/IPC.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/base/IPC$a.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/Entry$1.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/e.class
+>>> Handle Dir: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/library/R.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo2/IDemo2.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo2/IDemo2$Stub$Proxy.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo2/IDemo2$Stub.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/library/R.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/library/R$id.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/library/R$string.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/library/R$layout.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/R.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$9.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$21.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/R$xml.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$23.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/R$id.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/TestItem.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$27.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$18.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$25.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/R$mipmap.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/single_top/SingleTopActivity1.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/file_provider/FileProviderActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/file_provider/BitmapUtils.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/webview/WebViewActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/notify_test/NotifyActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/task_affinity/TAActivity4.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/task_affinity/TAActivity2.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/task_affinity/TAActivity3.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/task_affinity/TAActivity1.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/intent_filter/IntentFilterDemoActivity1.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/for_result/ForResultActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/standard/StandardActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/preference/PrefActivity1$TestPreferenceFragment.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/preference/PrefActivity2.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/preference/PrefActivity1.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/task_affinity_2/TA2Activity4.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/task_affinity_2/TA2Activity2.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/task_affinity_2/TA2Activity3.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/task_affinity_2/TA2Activity1.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/theme/ThemeBlackNoTitleBarActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/theme/ThemeDialogActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/theme/ThemeBlackNoTitleBarFullscreenActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/activity/single_instance/TIActivity1.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$22.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$8.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$20.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/webview/IWebPage.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/webview/ViewProxy$Creator.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/webview/ViewProxy.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/webview/WebPageProxy.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$24.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/provider/FileProvider.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/provider/FileProvider$PathStrategy.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/provider/Provider2.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/provider/FileProvider$SimplePathStrategy.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$19.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/receivers/PluginDemo1Receiver.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$26.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/BuildConfig.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/BaseActivity.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainApp.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$17.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$2.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$31.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$15.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/support/NotifyUtils.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/support/LogX.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$28.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/fragment/DemoCodeFragment.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/fragment/DemoFragment.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/R$string.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$11.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$4.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$6.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$13.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$30.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$1.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$29.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$14.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$16.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/service/PluginDemoAppService.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/service/PluginDemoService2.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/service/PluginDemoService1.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$TestAdapter.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$3.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/R$layout.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$7.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/R$attr.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$12.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$10.class
+----cxk----> filePath = /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$5.class
+
+
+
+>>> Do: ProviderInjector
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/cc6defd1855b33fc6971c5185b40076b87465ec2/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/exploded-aar/c4437ccfa7d4073e0aa89c00295dd3fa30a1502e/class
+>>> Handle Jar: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes
+    [Warning] --> java.lang.Exception: can not replace self
+>>> Handle Dir: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release
+>>> Replace: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$20.class Provider.insert():261
+
+
+>>> Do: ProviderInjector2
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/cc6defd1855b33fc6971c5185b40076b87465ec2/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/exploded-aar/c4437ccfa7d4073e0aa89c00295dd3fa30a1502e/class
+>>> Handle Jar: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes
+>>> Handle Dir: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release
+
+
+>>> Do: GetIdentifierInjector
+>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/cc6defd1855b33fc6971c5185b40076b87465ec2/output/jars/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/exploded-aar/c4437ccfa7d4073e0aa89c00295dd3fa30a1502e/class
+>>> Handle Jar: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes.jar
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes
+ GetIdentifierCall => /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/c.class getIdentifier():-1
+ GetIdentifierCall => /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/c.class getIdentifier():-1
+>>> Handle Dir: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release
+----------------------------------------------------------------------------------------------------
+/Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release
+----------------------------------------------------------------------------------------------------
+>>> Repackage...
+      [zip] Building zip: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/exploded-aar/c4437ccfa7d4073e0aa89c00295dd3fa30a1502e/class.jar
+      [zip] Building zip: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes.jar
+----------------------------------------------------------------------------------------------------
+:replugin-sample:plugin:plugin-demo1:app:transformClassesWithDexForRelease
+
+Running dex as a separate process.
+
+
+:replugin-sample:plugin:plugin-demo1:app:mergeReleaseJniLibFolders
+:replugin-sample:plugin:plugin-demo1:app:transformNativeLibsWithMergeJniLibsForRelease
+:replugin-sample:plugin:plugin-demo1:app:processReleaseJavaRes NO-SOURCE
+:replugin-sample:plugin:plugin-demo1:app:transformResourcesWithMergeJavaResForRelease
+:replugin-sample:plugin:plugin-demo1:app:packageRelease
+:replugin-sample:plugin:plugin-demo1:app:assembleRelease
+
+BUILD SUCCESSFUL in 7s
+53 actionable tasks: 43 executed, 10 up-to-date
+上午10:41:23: Task execution finished 'assembleRelease'.

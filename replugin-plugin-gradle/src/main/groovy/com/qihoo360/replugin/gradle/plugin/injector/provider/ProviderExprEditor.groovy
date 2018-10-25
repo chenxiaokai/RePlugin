@@ -60,7 +60,7 @@ public class ProviderExprEditor extends ExprEditor {
             methodCall.replace('{$_ = ' + PROVIDER_CLASS + '.' + method + '(com.qihoo360.replugin.RePlugin.getPluginContext(), $$);}')
         }
 
-        //>>> Replace: E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\classes\release\com\qihoo360\replugin\sample\demo1\MainActivity$19.class Provider.insert():237
+        //>>> Replace: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release/com/qihoo360/replugin/sample/demo1/MainActivity$20.class Provider.insert():261
         println ">>> Replace: ${filePath} Provider.${method}():${line}"
     }
 }

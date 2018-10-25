@@ -82,6 +82,7 @@ public class LocalBroadcastExprEditor extends ExprEditor {
             }
         }
 
+        //plugin-demo1 中没有替换的
         println ">>> Replace: ${filePath} <line:${call.lineNumber}> ${TARGET_CLASS}.${method}() <With> ${PROXY_CLASS}.${method}()\n"
     }
 }

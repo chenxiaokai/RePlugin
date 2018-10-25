@@ -64,9 +64,11 @@ public class ProviderInjector extends BaseInjector {
         }
 
         Util.newSection()
-        //E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\exploded-aar\0848edb7126d45045f7ba46b11a297f3b693dd59\class
-        //E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\exploded-aar\87c8f13e0cddc08265c43942441d25e39f1c0865\class
-        //E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\classes\release
+        /*
+        /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/exploded-aar/c4437ccfa7d4073e0aa89c00295dd3fa30a1502e/class
+        /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes
+        /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release
+         */
         println dir
 
         Files.walkFileTree(Paths.get(dir), new SimpleFileVisitor<Path>() {

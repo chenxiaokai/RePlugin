@@ -232,6 +232,9 @@ public class ReClassTransform extends Transform {
     def handleJar(ClassPool pool, JarInput input, IClassInjector injector, Object config) {
         File jar = input.file
         if (jar.absolutePath in includeJars) {
+
+            //>>> Handle Jar: /Users/chenxiaokai/.android/build-cache/cc6defd1855b33fc6971c5185b40076b87465ec2/output/jars/classes.jar
+            //>>> Handle Jar: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes.jar
             println ">>> Handle Jar: ${jar.absolutePath}"
             String dirAfterUnzip = map.get(jar.getParent() + File.separatorChar + jar.getName()).replace('.jar', '')
             injector.injectClass(pool, dirAfterUnzip, config)
@@ -272,11 +275,7 @@ public class ReClassTransform extends Transform {
 
         plugin-demo1源代码编译后放在下面目录
 
-        >>> Handle Dir: E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\classes\release
-        >>> Handle Dir: E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\classes\release
-        >>> Handle Dir: E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\classes\release
-        >>> Handle Dir: E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\classes\release
-        >>> Handle Dir: E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\classes\release
+        >>> Handle Dir: /Users/chenxiaokai/Downloads/github/RePlugin/replugin-sample/plugin/plugin-demo1/app/build/intermediates/classes/release
          */
         println ">>> Handle Dir: ${input.file.absolutePath}"
         injector.injectClass(pool, input.file.absolutePath, config)
@@ -295,6 +294,26 @@ public class ReClassTransform extends Transform {
      * 欢迎
      */
     def welcome() {
+
+        /*
+        打印结果:
+        ============================================================
+                    replugin-plugin-gradle
+        ============================================================
+        Add repluginPluginConfig to your build.gradle to enable this plugin:
+
+        repluginPluginConfig {
+            // Name of 'App Module'，use '' if root dir is 'App Module'. ':app' as default.
+            appModule = ':app'
+
+            // Injectors ignored
+            // LoaderActivityInjector: Replace Activity to LoaderActivity
+            // ProviderInjector: Inject provider method call.
+            ignoredInjectors = ['LoaderActivityInjector']
+        }
+
+         */
+
         println '\n'
         60.times { print '=' }   //打60个 =
         println '\n                    replugin-plugin-gradle'

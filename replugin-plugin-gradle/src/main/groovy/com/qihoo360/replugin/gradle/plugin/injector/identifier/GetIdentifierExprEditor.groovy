@@ -34,6 +34,15 @@ public class GetIdentifierExprEditor extends ExprEditor {
         String clsName = m.getClassName()
         String methodName = m.getMethodName()
 
+        /*
+        方式一
+            int indentify = getResources().getIdentifier(“com.test.demo:drawable/icon”,null,null);
+            第一个参数格式是：包名 + : +资源文件夹名 + / +资源名；是这种格式 然后其他的可以为null
+
+        方式二
+            intindentify= getResources().getIdentifier(“icon”, “drawable”, “com.test.demo”);
+            第一个参数为ID名，第二个为资源属性是ID或者是Drawable，第三个为包名。
+         */
         if (clsName.equalsIgnoreCase('android.content.res.Resources')) {
             if (methodName == 'getIdentifier') {
 
@@ -43,13 +52,14 @@ public class GetIdentifierExprEditor extends ExprEditor {
                 // 为特殊变量$3赋值，即动态修改参数3的值为插件的包名；
                 // '$_ = $proceed($$);'表示按原样调用。
 
+                //CommonData.appPackage 是插件的 包名
                 m.replace('{ $3 = \"' + CommonData.appPackage + '\"; ' +
                         '$_ = $proceed($$);' +
                         ' }')
 
-                // GetIdentifierCall => E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\exploded-aar\0848edb7126d45045f7ba46b11a297f3b693dd59\class\com\qihoo360\replugin\c.class getIdentifier():-1
-                //GetIdentifierCall => E:\github\RePlugin-2.2.0\replugin-sample\plugin\plugin-demo1\app\build\intermediates\exploded-aar\0848edb7126d45045f7ba46b11a297f3b693dd59\class\com\qihoo360\replugin\c.class getIdentifier():-1
-                println " GetIdentifierCall => ${filePath} ${methodName}():${m.lineNumber}"
+                //GetIdentifierCall => /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/c.class getIdentifier():-1
+                //GetIdentifierCall => /Users/chenxiaokai/Downloads/github/RePlugin/replugin-plugin-library/replugin-plugin-lib/build/intermediates/bundles/default/classes/com/qihoo360/replugin/c.class getIdentifier():-1
+                println " GetIdentifierCall => ${filePath} ${} ${methodName}():${m.lineNumber}"
             }
         }
     }
