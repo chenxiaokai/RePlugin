@@ -198,6 +198,7 @@ public class PluginLibraryInternalProxy {
             LogDebug.d(PLUGIN_TAG, "start activity: intent=" + intent + " plugin=" + plugin + " activity=" + activity + " process=" + process + " download=" + download);
         }
 
+        //第一步： 如果有必要，需要先下载插件
         // 是否启动下载
         // 若插件不可用（不存在或版本不匹配），则直接弹出“下载插件”对话框
         // 因为已经打开UpdateActivity，故在这里返回True，告诉外界已经打开，无需处理
@@ -232,6 +233,7 @@ public class PluginLibraryInternalProxy {
             return true;
         }
 
+        //第二步： 检查插件状态
         // 如果插件状态出现问题，则每次弹此插件的Activity都应提示无法使用，或提示升级（如有新版）
         // Added by Jiongxuan Zhang
         if (PluginStatusController.getStatus(plugin) < PluginStatusController.STATUS_OK) {
@@ -265,6 +267,7 @@ public class PluginLibraryInternalProxy {
             from.setComponent(new ComponentName(plugin, activity));
         }
 
+        //第三步： 寻找坑位
         ComponentName cn = mPluginMgr.mLocal.loadPluginActivity(intent, plugin, activity, process);
         if (cn == null) {
             if (LOG) {

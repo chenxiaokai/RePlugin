@@ -620,6 +620,8 @@ class Plugin {
         }
         //
         long t1 = System.currentTimeMillis();
+
+        //真正的加载
         boolean rc = doLoad(logTag, context, parent, manager, load);
         if (LOG) {
             LogDebug.i(PLUGIN_TAG, "load " + mInfo.getPath() + " " + hashCode() + " c=" + load + " rc=" + rc + " delta=" + (System.currentTimeMillis() - t1));
@@ -745,6 +747,7 @@ class Plugin {
         return doLoad(tag, context, parent, manager, load);
     }
 
+    //加载插件的Dex文件，资源，以及so文件等等
     private final boolean doLoad(String tag, Context context, ClassLoader parent, PluginCommImpl manager, int load) {
         if (mLoader == null) {
             // 试图释放文件
@@ -822,13 +825,13 @@ class Plugin {
                 mInfo = info;
             }
 
-            //
+            //加载Dex，获取组件信息
             mLoader = new Loader(context, mInfo.getName(), mInfo.getPath(), this);
             if (!mLoader.loadDex(parent, load)) {
                 return false;
             }
 
-            // 设置插件为“使用过的”
+            // 在Persistent进程中更新插件信息，设置插件为“使用过的”
             // 注意，需要重新获取当前的PluginInfo对象，而非使用“可能是新插件”的mInfo
             try {
                 PluginManagerProxy.updateUsedIfNeeded(mInfo.getName(), true);

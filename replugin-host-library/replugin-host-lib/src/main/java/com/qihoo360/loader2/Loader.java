@@ -168,6 +168,8 @@ class Loader {
         return new PluginContext(newBase, android.R.style.Theme, mClassLoader, mPkgResources, mPluginName, this);
     }
 
+    //函数会获取Dex中的组件的信息，包括Manifest中的组件属性，比如进程属性，TaskAffinity属性，注册静态广播等等。
+    // 但这里值得重点强调的是之前核心概念里提及的PluginDexClassLoader终于出现并被初始化了
     final boolean loadDex(ClassLoader parent, int load) {
         try {
             PackageManager pm = mContext.getPackageManager();

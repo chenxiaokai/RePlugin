@@ -408,6 +408,7 @@ public class PluginCommImpl {
 
         try {
             // 获取 ActivityInfo(可能是其它插件的 Activity，所以这里使用 pair 将 pluginName 也返回)
+            // 第一次去获取信息，会首先加载插件Dex文件以及资源等，并创建PluginDexClassLoader
             ai = getActivityInfo(plugin, activity, intent);
             if (ai == null) {
                 if (LOG) {
@@ -427,13 +428,13 @@ public class PluginCommImpl {
                 process = PluginClientHelper.getProcessInt(ai.processName);
             }
 
-            // 容器选择（启动目标进程）
+            // 容器选择（启动目标进程,如果有必要的话，一般默认会使用UI进程）
             IPluginClient client = MP.startPluginProcess(plugin, process, info);
             if (client == null) {
                 return null;
             }
 
-            // 远程分配坑位
+            // 远程分配坑位，调用了Persistent进程中的PluginProcessPer.allocActivityContainer函数
             container = client.allocActivityContainer(plugin, process, ai.name, intent);
             if (LOG) {
                 LogDebug.i(PLUGIN_TAG, "alloc success: container=" + container + " plugin=" + plugin + " activity=" + activity);

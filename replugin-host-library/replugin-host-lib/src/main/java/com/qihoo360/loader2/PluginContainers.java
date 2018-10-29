@@ -550,6 +550,8 @@ a 流程完成
      * @return
      */
     final String alloc(ActivityInfo ai, String plugin, String activity, int process, Intent intent) {
+        //保存了坑位Activity 和 真实要启动的Activity之间的对应关系，
+        //并且这个对应关系会被保存起来，在RepluginClassLoader在加载类的时候会被拿出来使用，以获取要运行的Activity的class对象。
         ActivityState state;
 
         String defaultPluginTaskAffinity = ai.applicationInfo.packageName;
