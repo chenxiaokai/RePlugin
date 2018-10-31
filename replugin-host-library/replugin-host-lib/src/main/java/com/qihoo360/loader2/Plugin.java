@@ -518,7 +518,9 @@ class Plugin {
     }
 
     /**
-     * @param load
+     * @param load 第一个是加载类型，一共有四种加载类型
+     * @param useCache  第二个参数是是否使用缓存，通常情况下我们会现在缓存中查找插件信息，这样会更快。
+     *                  只是如果大量插件加载到内存会不会占用太多的内存，感兴趣的同学可以自己研究研究
      * @return
      */
     private boolean loadLocked(int load, boolean useCache) {
@@ -592,7 +594,7 @@ class Plugin {
             sLoadedReasons.add(reason);
         }
 
-        // 这里先处理一下，如果cache命中，省了后面插件提取（如释放Jar包等）操作
+        // 这里先处理一下，如果cache命中，省了后面插件提取（如释放Jar包等）操作, 直接返回缓存数据
         if (useCache) {
             boolean result = loadByCache(load);
             // 如果缓存命中，则直接返回
@@ -751,6 +753,7 @@ class Plugin {
     private final boolean doLoad(String tag, Context context, ClassLoader parent, PluginCommImpl manager, int load) {
         if (mLoader == null) {
             // 试图释放文件
+            // 中间省略这一段代码是释放so文件，请自行阅读代码，代码清晰简单
             PluginInfo info = null;
             if (mInfo.getType() == PluginInfo.TYPE_BUILTIN) {
                 //

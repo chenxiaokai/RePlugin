@@ -89,7 +89,8 @@ class PluginProcessPer extends IPluginClient.Stub {
         String activity = null;
 
         // 先找登记的，如果找不到，则用forward activity
-        PluginContainers.ActivityState state = mACM.lookupByContainer(container);
+        //PluginContainers.ActivityState 它就是在分配坑位的时候，我们用来保存坑位组件与真实组件对应关系的类
+        PluginContainers.ActivityState state = mACM.lookupByContainer(container);  // 找到坑位Activity与真实Activity的对应关系对象
         if (state == null) {
             // PACM: loadActivityClass, not register, use forward activity, container=
             if (LOGR) {
@@ -104,6 +105,7 @@ class PluginProcessPer extends IPluginClient.Stub {
             LogDebug.d(PLUGIN_TAG, "PACM: loadActivityClass in=" + container + " target=" + activity + " plugin=" + plugin);
         }
 
+        //通过插件名从缓存中加载Plugin对象
         Plugin p = mPluginMgr.loadAppPlugin(plugin);
         if (p == null) {
             // PACM: loadActivityClass, not found plugin
@@ -113,12 +115,19 @@ class PluginProcessPer extends IPluginClient.Stub {
             return null;
         }
 
+        //接着取出插件的ClassLoader对象，这个对象正是加载插件时创建的PuginDexClassLoader的实例了
         ClassLoader cl = p.getClassLoader();
         if (LOG) {
             LogDebug.d(PLUGIN_TAG, "PACM: loadActivityClass, plugin activity loader: in=" + container + " activity=" + activity);
         }
         Class<?> c = null;
         try {
+            /*
+              然后利用插件的PuginDexClassLoader对象来加载真实Activity的class对象。
+
+              找到插件Activity的类对象后，Android系统就开始运行Activity的启动流程了，这些事情由ActivityManagerService和ActivityThread负责
+              就这样，Replugin用插件中的Activity替换了坑位Activity，我们的插件被运行起来啦！！很巧妙的设计
+             */
             c = cl.loadClass(activity);
         } catch (Throwable e) {
             if (LOGR) {

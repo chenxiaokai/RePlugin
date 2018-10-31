@@ -675,6 +675,7 @@ class PmBase {
 
         //
         if (mContainerActivities.contains(className)) {
+            //mClient是PluginProcessPer的实例，而PluginProcessPer是IPluginClient的实现类
             Class<?> c = mClient.resolveActivityClass(className);
             if (c != null) {
                 return c;
