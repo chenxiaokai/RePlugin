@@ -32,11 +32,17 @@ import com.qihoo360.replugin.helper.LogRelease;
  */
 public abstract class PluginActivity extends Activity {
 
+
+    /*
+        PluginContext 重写了startActivity()函数
+
+        到这里，你无论是使用getContext().startActivity还是直接在Activity中使用startActivity都会走Replugin的启动流程
+     */
     @Override
     protected void attachBaseContext(Context newBase) {
         //插件的Activity创建成功后通过此方法获取其base Context
-        newBase = RePluginInternal.createActivityContext(this, newBase);
-        super.attachBaseContext(newBase);
+        newBase = RePluginInternal.createActivityContext(this, newBase); //创建PluginContext对象
+        super.attachBaseContext(newBase); //替换原生的Context
     }
 
     @Override

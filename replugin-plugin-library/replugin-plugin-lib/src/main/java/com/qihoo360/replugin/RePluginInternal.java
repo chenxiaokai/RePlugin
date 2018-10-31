@@ -133,6 +133,8 @@ public class RePluginInternal {
         }
 
         try {
+            //当我们在Plugin(就是插件apk)中使用Replugin.startActivity时，实际上是通过MethodInvoker.call函数去执行Host中Replugin对应的startActivity函数
+            // 用反射的方式调用Host中Replugin的startActivity函数来启动Activity
             Object obj = ProxyRePluginInternalVar.startActivity.call(null, activity, intent);
             if (obj != null) {
                 return (Boolean) obj;

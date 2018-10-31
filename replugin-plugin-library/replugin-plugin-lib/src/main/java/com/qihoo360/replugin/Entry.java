@@ -35,7 +35,7 @@ public class Entry {
      * @return
      */
     public static final IBinder create(Context context, ClassLoader cl, IBinder manager) {
-        // 初始化插件框架
+        // 初始化插件框架,初始化了一些代理类，这些代理类可以在Plugin中调用Host中的函数
         RePluginFramework.init(cl);
         // 初始化Env， 缓存Application，ClassLoader，IBinder接口
         RePluginEnv.init(context, cl, manager);

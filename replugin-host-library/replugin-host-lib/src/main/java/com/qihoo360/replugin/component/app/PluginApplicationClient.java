@@ -44,6 +44,7 @@ import static com.qihoo360.replugin.helper.LogDebug.PLUGIN_TAG;
  *
  * @author RePlugin Team
  */
+//PluginApplicationClient 为插件创建了Application对象
 public class PluginApplicationClient {
 
     private static volatile boolean sInited;
@@ -203,12 +204,17 @@ public class PluginApplicationClient {
         }
     }
 
+    /*
+    PluginApplicationClient为插件创建了Application对象，在PluginApplicationClient.callAttachBaseContext函数中通过反射调用Applicaiton.attach函数，
+    用一个PluginContext对象替换掉原来的Context对象。
+     */
     public void callAttachBaseContext(Context c) {
         if (LOG) {
             LogDebug.d(PLUGIN_TAG, "PAC.callAttachBaseContext(): Call attachBaseContext(), cl=" + mPlgClassLoader);
         }
         try {
             sAttachBaseContextMethod.setAccessible(true);   // Protected 修饰
+            // 将PluginContext对象传递给Application对象
             sAttachBaseContextMethod.invoke(mApplication, c);
         } catch (Throwable e) {
             if (BuildConfig.DEBUG) {

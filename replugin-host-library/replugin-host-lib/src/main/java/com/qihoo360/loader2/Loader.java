@@ -174,6 +174,7 @@ class Loader {
         try {
             PackageManager pm = mContext.getPackageManager();
 
+            //第一步: 获取PackageInfo并缓存插件相关的信息，比如组件，组件属性，资源等，下次就可以直接从缓存中读取
             mPackageInfo = Plugin.queryCachedPackageInfo(mPath);
             if (mPackageInfo == null) {
                 // PackageInfo
@@ -235,11 +236,12 @@ class Loader {
                 // PluginInfoList.save();
             }
 
+            //第二步: 解析组件信息，注册Plugin的Manifest中声明的BroadcastReceiver
             // 创建或获取ComponentList表
             // Added by Jiongxuan Zhang
             mComponents = Plugin.queryCachedComponentList(mPath);
             if (mComponents == null) {
-                // ComponentList
+                // ComponentList 在它的构造函数中完成了对Plugin的Manifest文件的解析，调用的是Minifestparser类
                 mComponents = new ComponentList(mPackageInfo, mPath, mPluginObj.mInfo);
 
                 // 动态注册插件中声明的 receiver
@@ -262,6 +264,10 @@ class Loader {
                 return isPackageInfoLoaded();
             }
 
+            /*
+            第三步: 获取Plugin的资源，先查找缓存，如果找不到就通过PackageManager创建Resources对象，但这里做了一个多余的赋值操作是为了修复一个BUG，不必在意。
+                   最后将资源对象缓存下来
+            */
             mPkgResources = Plugin.queryCachedResources(mPath);
             // LOAD_RESOURCES和LOAD_ALL都会获取资源，但LOAD_INFO不可以（只允许获取PackageInfo）
             if (mPkgResources == null) {
@@ -299,6 +305,7 @@ class Loader {
                 return isResourcesLoaded();
             }
 
+            //第四步: 注意咯，这里就是创建Plugin的PluginDexClassLoader的地方，将它缓存起来，不必每次都创建一个新的
             mClassLoader = Plugin.queryCachedClassLoader(mPath);
             if (mClassLoader == null) {
                 // ClassLoader
@@ -360,7 +367,14 @@ class Loader {
                 return isDexLoaded();
             }
 
-            // Context
+            /*
+                第五步: 为Plugin创建一个全局的PluginContext，并用上面创建的ClassLoader以及Resources作为参数
+                       而这个PluginContext对象会被赋值给Plugin的Application对象（后面会讲到）。
+                       其实每一个Plugin的Activity都会创建一个PluginContext对象，并使用相同的ClassLoader和Resources，
+                       因此在Plugin中就可以加载相关的类和使用资源了，跟原生程序一样
+
+                到这里，Plugin的加载就算是全部完成了
+            */
             mPkgContext = new PluginContext(mContext, android.R.style.Theme, mClassLoader, mPkgResources, mPluginName, this);
             if (LOG) {
                 LogDebug.d(PLUGIN_TAG, "pkg context=" + mPkgContext);
@@ -467,7 +481,9 @@ class Loader {
     final boolean loadEntryMethod3() {
         //
         try {
+            //className => com.qihoo360.replugin.Entry
             String className = Factory.REPLUGIN_LIBRARY_ENTRY_PACKAGE_PREFIX + "." + Factory.PLUGIN_ENTRY_CLASS_NAME;
+            //注意这里的mClassLoader是插件的PluginDexClassLoader，所以才能得到插件中的类
             Class<?> c = mClassLoader.loadClass(className);
             if (LOG) {
                 LogDebug.d(PLUGIN_TAG, "found entry: className=" + className + ", loader=" + c.getClassLoader());
@@ -481,9 +497,12 @@ class Loader {
         return mCreateMethod2 != null;
     }
 
+    //会用反射的方式调用上面拿到的create函数
     final boolean invoke2(PluginCommImpl x) {
         try {
             IBinder manager = null; // TODO
+            //这里我们将会进入到Plugin端的代码中，来看看Entry.create做了什么。这里有一个参数是ClassLoader，这个ClassLoader是Host中的RepluginClassLoader，
+            // 有了它，Plugin才能找到Host当中的类并调用这些类的方法
             IBinder b = (IBinder) mCreateMethod2.invoke(null, mPkgContext, getClass().getClassLoader(), manager);
             if (b == null) {
                 if (LOGR) {

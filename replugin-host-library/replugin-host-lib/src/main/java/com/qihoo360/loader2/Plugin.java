@@ -435,6 +435,7 @@ class Plugin {
         // 尝试在此处调用Application.onCreate方法
         // Added by Jiongxuan Zhang
         if (load == LOAD_APP && rc) {
+            // 关于Plugin的Application的操作都在这里了
             callApp();
         }
         // 如果info改了，通知一下常驻
@@ -750,6 +751,12 @@ class Plugin {
     }
 
     //加载插件的Dex文件，资源，以及so文件等等
+    /*
+       doLoad() 函数主要做三件事情:
+        1): 释放插件文件到相应的目录，比如so库，dex文件
+        2): 加载dex文件，比如组件信息，组件属性，资源等。通过Loader.loadDex函数实现
+        3): 要运行Plugin，还需要初始化Plugin的运行环境
+     */
     private final boolean doLoad(String tag, Context context, ClassLoader parent, PluginCommImpl manager, int load) {
         if (mLoader == null) {
             // 试图释放文件
@@ -848,6 +855,7 @@ class Plugin {
             // 若需要加载Dex，则还同时需要初始化插件里的Entry对象
             if (load == LOAD_APP) {
                 // NOTE Entry对象是可以在任何线程中被调用到
+                // loadEntryLocked()函数，这个函数负责初始化Plugin的运行环境
                 if (!loadEntryLocked(manager)) {
                     return false;
                 }
@@ -868,6 +876,7 @@ class Plugin {
         }
     }
 
+    // 这个函数负责初始化Plugin的运行环境
     private boolean loadEntryLocked(PluginCommImpl manager) {
         if (mDummyPlugin) {
             if (LOGR) {
@@ -891,6 +900,8 @@ class Plugin {
                 if (!mLoader.invoke(manager)) {
                     return false;
                 }
+
+                //Loader.loadEntryMethod3通过反射将Plugin中的Entry类的create函数对象得到并保存在mCreateMethod2中
             } else if (mLoader.loadEntryMethod3()) {
                 if (!mLoader.invoke2(manager)) {
                     return false;
@@ -923,6 +934,23 @@ class Plugin {
         }
     }
 
+    /*
+    实际上在Plugin中调用getApplication获取到的是Host的Application对象，因为别忘了我们是利用坑位原理运行插件组件的，
+    所以在插件中我们用到的都是Host的Application。但是万一Plugin的Application中有客户定制的任何动作要完成呢？
+    所以在加载 Plugin之后，Host也会通过反射创建Plugin的Application对象，并反射调用它的attach和create函数。
+
+    我们总结一下一个插件Activity启动的流程大致是：
+
+        1):加载目标Activity信息
+            开始查找Activity信息 —> 找到对应的Pugin信息 —> 解压APK文件 —> 加载Dex文件内容 —> 创建Application对象 —>
+             创建Entry对象初始化Plugin环境
+
+        2):寻找坑位
+            查找坑位 —> 将目标Activity与找到的坑位以ActivityState的形式缓存在PluginContainers中 —> 启动坑位Activity —>
+            系统调用RepluginClassLoader —> 调用PluginDexClassLoader加载坑位Activity类 —>
+            通过PluginContainers找到坑位对应的目标Activity类 —> 系统调用PluginActivity的attachBaseContext函数 —>
+            创建PluginContext对象并替换 —> 目标Activity的正常启动流程（onCreate，onStart，onResume.....)
+     */
     private void callAppLocked() {
         // 获取并调用Application的几个核心方法
         if (!mDummyPlugin) {

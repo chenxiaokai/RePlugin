@@ -67,7 +67,11 @@ public class RePluginFramework {
         mInitialized = true;
 
         try {
-            //
+            /*
+            我们拿RePlugin.ProxyRePluginVar.initLocked作为例子来讲解。这里还是通过反射，
+            在Plugin中去获取Host中Replugin的相关方法并保存在一系列的MethodInvoker对象中，比如Replugin.install，
+            Replugin.preload，Replugin.startActivity等
+             */
             RePluginInternal.ProxyRePluginInternalVar.initLocked(cl);
             RePlugin.ProxyRePluginVar.initLocked(cl);
             PluginLocalBroadcastManager.ProxyLocalBroadcastManagerVar.initLocked(cl);
