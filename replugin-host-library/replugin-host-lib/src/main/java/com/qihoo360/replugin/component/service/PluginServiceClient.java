@@ -93,6 +93,8 @@ public class PluginServiceClient {
         // 既然确认是插件，则将之前获取的插件信息填入
         intent.setComponent(cn);
 
+        //PSS的对象，它是一个IPluginServiceServer的一个实例化对象，并用它执行启动Service的动作
+        //如果是运行在Persistent进程，用IPluginHost来获取PSS，如果是其他进程，则使用IPluginClient来获取
         IPluginServiceServer pss = sServerFetcher.fetchByProcess(process);
         if (pss == null) {
             if (LOGR) {
@@ -101,9 +103,8 @@ public class PluginServiceClient {
             return null;
         }
 
-        // 开启服务
         try {
-            return pss.startService(intent, sClientMessenger);
+            return pss.startService(intent, sClientMessenger);// 开启服务
         } catch (Throwable e) {
             if (LOGR) {
                 LogRelease.e(PLUGIN_TAG, "psc.ss: pss e", e);

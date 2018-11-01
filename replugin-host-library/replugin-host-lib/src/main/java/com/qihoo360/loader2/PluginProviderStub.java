@@ -221,6 +221,9 @@ public class PluginProviderStub {
         ContentValues values = new ContentValues();
         values.put(KEY_METHOD, METHOD_START_PROCESS);
         values.put(KEY_COOKIE, PMF.sPluginMgr.mLocalCookie);
+
+        //这里的buildUri(index)最终会是这样的：content://com.qihoo360.replugin.sample.host.loader.p.mainN99/main，
+        // 中间的com.qihoo360.replugin.sample.host.loader.p.mainN99是ContentProvider的authority
         Uri uri = context.getContentResolver().insert(ProcessPitProviderBase.buildUri(index), values);
         if (LOG) {
             LogDebug.d(PLUGIN_TAG, "proxyStartPluginProcess insert.rc=" + (uri != null ? uri.toString() : "null"));

@@ -254,6 +254,7 @@ class Loader {
 
                 /* 只调整一次 */
                 // 调整插件中组件的进程名称
+                //在这个函数中，Replugin会从PackageInfo中的ApplicationInfo.mMetaData找到自定义进程名与Replugin提供的进程名的映射关系
                 adjustPluginProcess(mPackageInfo.applicationInfo);
 
                 // 调整插件中 Activity 的 TaskAffinity
@@ -661,6 +662,7 @@ class Loader {
             }
         }
 
+        //通过doAdjust函数用Replugin内置的进程名替换掉用户在插件中自定义的进程名，并保存在ComponentList中的ComponentIinfo中
         doAdjust(processMap, mComponents.getActivityMap());
         doAdjust(processMap, mComponents.getServiceMap());
         doAdjust(processMap, mComponents.getReceiverMap());

@@ -90,8 +90,7 @@ public class PluginClientHelper {
 
     /**
      * 根据进程名称获取进程ID
-     *
-     * @param processName 进程名称
+     * 你可以看到Service可以在运行在UI进程，Persistent进程以及自定义进程中
      */
     public static Integer getProcessInt(String processName) {
         if (!TextUtils.isEmpty(processName)) {

@@ -435,6 +435,7 @@ class PmBase {
         }
     }
 
+    //这里注册PluginProcessPer的动作是通过PmBase.attach函数完成的
     final void attach() {
         //
         try {
@@ -1226,7 +1227,7 @@ class PmBase {
         //
         PluginProcessMain.schedulePluginProcessLoop(PluginProcessMain.CHECK_STAGE1_DELAY);
 
-        // 获取
+        // 尝试从缓存中查找
         IPluginClient client = PluginProcessMain.probePluginClient(plugin, process, info);
         if (client != null) {
             if (LOG) {
@@ -1238,6 +1239,7 @@ class PmBase {
         // 分配
         int index = IPluginManager.PROCESS_AUTO;
         try {
+            //分配进程坑位，这里的代码在2.1.7以后的版本会优化，大部分情况下 process == index
             index = PluginProcessMain.allocProcess(plugin, process);
             if (LOG) {
                 LogDebug.d(PLUGIN_TAG, "start plugin process: alloc process ok, plugin=" + plugin + " index=" + index);
@@ -1254,7 +1256,8 @@ class PmBase {
             return null;
         }
 
-        // 启动
+        // 启动自定义进程
+        // 会使用第一篇分析中启动Persitent进程同样的方式来启动自定义进程: 尝试去访问一个ContentProvider，如果它没有运行，则在新的进程中启动它
         boolean rc = PluginProviderStub.proxyStartPluginProcess(mContext, index);
         if (LOG) {
             LogDebug.d(PLUGIN_TAG, "start plugin process: start process ok, plugin=" + plugin + " index=" + index);

@@ -64,6 +64,7 @@ import static com.qihoo360.replugin.helper.LogRelease.LOGR;
  *
  * @author RePlugin Team
  */
+//在每一个进程里面都有一个PluginServiceServer在运行，并且负责各自进程内部的Service启动工作
 public class PluginServiceServer {
 
     private static final String TAG = "PluginServiceServer";
@@ -129,6 +130,13 @@ public class PluginServiceServer {
         intent = cloneIntentLocked(intent);
         ComponentName cn = intent.getComponent();
 //        ProcessRecord callerPr = retrieveProcessRecordLocked(client);
+
+        /*
+            installServiceIfNeededLocked()调用installServiceLocked函数，加载Service类，通过反射创建Service对象，
+            并利用attachBaseContextLocked函数反射调用Service.attachBaseContext，
+            注意这里会将插件的全局PluginContext赋值给Service，然后还调用了Service.onCreate函数，
+            最后一步将开启Service坑位，启动Service坑位只是为了让进程被回收的可能性降低
+         */
         final ServiceRecord sr = retrieveServiceLocked(intent);
         if (sr == null) {
             return null;
@@ -412,6 +420,11 @@ public class PluginServiceServer {
         }
     }
 
+    /*
+        Replugin只是简单的将Service作为普通的类在运行，手动的调用Service的生命周期函数。当然本质上原生系统在启动Service的的时候，
+        在ActivityThread类中也是这样做的，只不过原生系统用ActivityManagerService来管理Service，Replugin用PSS来管理，
+        它们都为每一个Service产生了一个ServiceRecord对象
+     */
     // 加载插件，获取Service对象，并将其缓存起来
     private boolean installServiceLocked(ServiceRecord sr) {
         // 通过ServiceInfo创建Service对象

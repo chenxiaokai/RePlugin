@@ -496,6 +496,7 @@ public class PluginContext extends ContextThemeWrapper {
 
     @Override
     public ComponentName startService(Intent service) {
+        //mContextInjector，它为用户提供了能够自定义Service启动前后的附加操作的途径。
         if (mContextInjector != null) {
             mContextInjector.startServiceBefore(service);
         }
@@ -505,7 +506,7 @@ public class PluginContext extends ContextThemeWrapper {
             return super.startService(service);
         }
         try {
-            return PluginServiceClient.startService(this, service, true);
+            return PluginServiceClient.startService(this, service, true); //Replugin的启动逻辑
         } catch (PluginClientHelper.ShouldCallSystem e) {
             // 若打开插件出错，则直接走系统逻辑
             return super.startService(service);
